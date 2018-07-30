@@ -9,19 +9,19 @@ namespace Profissional.Repositoriox
 {
     public class BaseRep<TEntity> : IBase<TEntity> where TEntity : class
     {
-        public virtual int Add(params TEntity[] items)
+        private Contexto db = new Contexto();
+        public int Add(params TEntity[] items)
         {
-            var context = new Contexto();
             int id = 0;
             foreach (TEntity item in items)
             {
-                context.Entry(item).State = EntityState.Added;
+                db.Entry(item).State = EntityState.Added;
                 dynamic idT = item;
                 id = idT.ID;
 
             }
-            context.SaveChanges();
-            return id;
+             db.SaveChanges();
+            return  id;
         }
 
         public async Task<List<TEntity>> GetAll()

@@ -20,3 +20,9 @@ c:\users\felipe\source\repos\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.A
 c:\users\felipe\source\repos\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.csproj.CopyComplete
 c:\users\felipe\source\repos\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.dll
 c:\users\felipe\source\repos\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.pdb
+C:\staffpro\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.csprojAssemblyReference.cache
+C:\staffpro\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.csproj.CoreCompileInputs.cache
+C:\staffpro\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.AssemblyInfoInputs.cache
+C:\staffpro\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.AssemblyInfo.cs
+C:\staffpro\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.dll
+C:\staffpro\Profissionais\teste\obj\Debug\netcoreapp2.0\teste.pdb

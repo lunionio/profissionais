@@ -12,3 +12,17 @@ c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\ne
 c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csproj.CopyComplete
 c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.dll
 c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.pdb
+C:\staffpro\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Repositorio.deps.json
+C:\staffpro\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Repositorio.dll
+C:\staffpro\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Repositorio.pdb
+C:\staffpro\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Dominio.dll
+C:\staffpro\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Infra.dll
+C:\staffpro\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Dominio.pdb
+C:\staffpro\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Infra.pdb
+C:\staffpro\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csprojAssemblyReference.cache
+C:\staffpro\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csproj.CoreCompileInputs.cache
+C:\staffpro\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.AssemblyInfoInputs.cache
+C:\staffpro\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.AssemblyInfo.cs
+C:\staffpro\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csproj.CopyComplete
+C:\staffpro\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.dll
+C:\staffpro\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.pdb

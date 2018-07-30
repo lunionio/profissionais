@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Profissional.Dominio.Entidades;
 using Profissional.Dominio.Interfaces;
 using Profissional.Infra;
@@ -8,10 +9,11 @@ namespace Profissional.Repositorio
 {
     public class ServicoTipoRep: BaseRep<ServicoTipo>, IServicoTipo
     {
-        public ServicoTipo GetById(int id)
+        private Contexto db = new Contexto();
+
+        public async Task<ServicoTipo> GetByIdAsync(int id)
         {
-            var context = new Contexto();
-            return context.ServicoTipo.Where(c => c.ID == id).First();
+            return await db.ServicoTipo.FirstAsync(c => c.ID == id);
         }
     }
 }

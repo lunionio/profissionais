@@ -3478,11 +3478,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Servico\\Profissional.Servico.csproj",
+      "projectUniqueName": "C:\\staffpro\\Profissionais\\Profissional.Servico\\Profissional.Servico.csproj",
       "projectName": "Profissional.Servico",
-      "projectPath": "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Servico\\Profissional.Servico.csproj",
+      "projectPath": "C:\\staffpro\\Profissionais\\Profissional.Servico\\Profissional.Servico.csproj",
       "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Servico\\obj\\",
+      "outputPath": "C:\\staffpro\\Profissionais\\Profissional.Servico\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3501,11 +3501,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj": {
-              "projectPath": "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj"
+            "C:\\staffpro\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj": {
+              "projectPath": "C:\\staffpro\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj"
             },
-            "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Repositorio\\Profissional.Repositorio.csproj": {
-              "projectPath": "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Repositorio\\Profissional.Repositorio.csproj"
+            "C:\\staffpro\\Profissionais\\Profissional.Repositorio\\Profissional.Repositorio.csproj": {
+              "projectPath": "C:\\staffpro\\Profissionais\\Profissional.Repositorio\\Profissional.Repositorio.csproj"
             }
           }
         }

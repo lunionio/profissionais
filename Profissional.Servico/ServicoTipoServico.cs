@@ -22,15 +22,15 @@ namespace Profissional.Servico
 
         }
 
-        public ServicoTipo Get(int id)
+        public async Task<ServicoTipo> Get(int id)
         {
             try
             {
-                return new ServicoTipoRep().GetById(id);
+                return await  new ServicoTipoRep().GetByIdAsync(id);
             }
             catch (Exception)
             {
-                return new ServicoTipo();
+                throw new Exception("Erro ao efetuar requisição!");
             }
         }
     }

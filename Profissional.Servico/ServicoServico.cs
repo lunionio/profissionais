@@ -16,20 +16,20 @@ namespace Profissional.Servico
             }
             catch (Exception ex)
             {
-                return new List<Dominio.Entidades.Servico>();
+                throw new Exception("Erro ao efetuar requisição!");
             }
         }
 
-        public Dominio.Entidades.Servico GetById(int id)
+        public async Task<Dominio.Entidades.Servico> GetById(int id)
         {
             try
             {
-                return new ServicoRep().GetById(id);
+                return await new ServicoRep().GetByIdAsync(id);
             }
             catch (Exception)
             {
 
-                return new Dominio.Entidades.Servico();
+                throw new Exception("Erro ao efetuar requisição!");
             }
         }
 
@@ -42,7 +42,7 @@ namespace Profissional.Servico
             catch (Exception)
             {
 
-                return new List<Dominio.Entidades.Servico>();
+                throw new Exception("Erro ao efetuar requisição!");
             }
         }
     }

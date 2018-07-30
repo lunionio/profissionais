@@ -3439,11 +3439,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Infra\\Profissional.Infra.csproj",
+      "projectUniqueName": "C:\\staffpro\\Profissionais\\Profissional.Infra\\Profissional.Infra.csproj",
       "projectName": "Profissional.Infra",
-      "projectPath": "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Infra\\Profissional.Infra.csproj",
+      "projectPath": "C:\\staffpro\\Profissionais\\Profissional.Infra\\Profissional.Infra.csproj",
       "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Infra\\obj\\",
+      "outputPath": "C:\\staffpro\\Profissionais\\Profissional.Infra\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3462,8 +3462,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj": {
-              "projectPath": "C:\\Users\\Felipe\\source\\repos\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj"
+            "C:\\staffpro\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj": {
+              "projectPath": "C:\\staffpro\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj"
             }
           }
         }

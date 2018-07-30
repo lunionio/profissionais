@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +13,9 @@ namespace Profissional.Repositorio
     public class ServicoRep : BaseRep<Servico>, IServico
     {
 
-        public Servico GetById(int id)
+        public async Task<Servico> GetByIdAsync(int id)
         {
-            return new Contexto().Servico.Where(c => c.ID == id && c.Ativo == true).FirstOrDefault();
+            return await new Contexto().Servico.FirstAsync(c => c.ID == id && c.Ativo == true);
         }
 
         public async Task<List<Servico>> GetByServicoTipoId(int idTipo)

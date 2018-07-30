@@ -1,9 +1,10 @@
 ﻿using Profissional.Dominio.Entidades;
+using System.Threading.Tasks;
 
 namespace Profissional.Dominio.Interfaces
 {
-    public interface IServicoTipo: IBase<ServicoTipo>
+    public  interface IServicoTipo: IBase<ServicoTipo>
     {
-        ServicoTipo GetById(int id);
+        Task<ServicoTipo> GetByIdAsync(int id);
     }
 }
