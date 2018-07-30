@@ -1,0 +1,12 @@
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Infra.deps.json
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Infra.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Dominio.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Dominio.pdb
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.csprojAssemblyReference.cache
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.csproj.CoreCompileInputs.cache
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.AssemblyInfoInputs.cache
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.AssemblyInfo.cs
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.csproj.CopyComplete
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Infra.pdb
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.pdb

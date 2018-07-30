@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Profissional.Aplicacao\Profissional.Aplicacao.csproj" />
+    <ProjectReference Include="..\Profissional.Dominio\Profissional.Dominio.csproj" />
+    <ProjectReference Include="..\Profissional.Infra\Profissional.Infra.csproj" />
+    <ProjectReference Include="..\Profissional.Repositorio\Profissional.Repositorio.csproj" />
+    <ProjectReference Include="..\Profissional.Servico\Profissional.Servico.csproj" />
+  </ItemGroup>
+
+</Project>

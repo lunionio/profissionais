@@ -1,0 +1,14 @@
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Repositorio.deps.json
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Repositorio.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Repositorio.pdb
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Dominio.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Infra.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Dominio.pdb
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Infra.pdb
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csprojAssemblyReference.cache
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csproj.CoreCompileInputs.cache
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.AssemblyInfoInputs.cache
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.AssemblyInfo.cs
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csproj.CopyComplete
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.pdb

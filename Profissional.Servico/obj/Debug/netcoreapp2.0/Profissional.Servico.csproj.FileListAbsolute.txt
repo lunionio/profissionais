@@ -1,0 +1,16 @@
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\bin\Debug\netcoreapp2.0\Profissional.Servico.deps.json
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\bin\Debug\netcoreapp2.0\Profissional.Servico.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\bin\Debug\netcoreapp2.0\Profissional.Servico.pdb
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\bin\Debug\netcoreapp2.0\Profissional.Dominio.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\bin\Debug\netcoreapp2.0\Profissional.Dominio.pdb
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\obj\Debug\netcoreapp2.0\Profissional.Servico.csprojAssemblyReference.cache
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\obj\Debug\netcoreapp2.0\Profissional.Servico.csproj.CoreCompileInputs.cache
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\obj\Debug\netcoreapp2.0\Profissional.Servico.AssemblyInfoInputs.cache
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\obj\Debug\netcoreapp2.0\Profissional.Servico.AssemblyInfo.cs
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\obj\Debug\netcoreapp2.0\Profissional.Servico.csproj.CopyComplete
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\obj\Debug\netcoreapp2.0\Profissional.Servico.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\obj\Debug\netcoreapp2.0\Profissional.Servico.pdb
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\bin\Debug\netcoreapp2.0\Profissional.Infra.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\bin\Debug\netcoreapp2.0\Profissional.Repositorio.dll
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\bin\Debug\netcoreapp2.0\Profissional.Repositorio.pdb
+c:\users\felipe\source\repos\Profissionais\Profissional.Servico\bin\Debug\netcoreapp2.0\Profissional.Infra.pdb
