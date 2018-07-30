@@ -10,6 +10,10 @@ namespace Profissional.Repositoriox
     public class BaseRep<TEntity> : IBase<TEntity> where TEntity : class
     {
         private Contexto db = new Contexto();
+
+
+
+
         public int Add(params TEntity[] items)
         {
             int id = 0;
@@ -32,22 +36,21 @@ namespace Profissional.Repositoriox
 
         public void Remove(params TEntity[] items)
         {
-            var context = new Contexto();
             foreach (TEntity item in items)
             {
-                context.Entry(item).State = EntityState.Deleted;
+                db.Entry(item).State = EntityState.Deleted;
             }
-            context.SaveChanges();
+            db.SaveChanges();
         }
 
         public void Update(params TEntity[] items)
         {
-            var context = new Contexto();
+
             foreach (TEntity item in items)
             {
-                context.Entry(item).State = EntityState.Modified;
+                db.Entry(item).State = EntityState.Modified;
             }
-            context.SaveChanges();
+            db.SaveChanges();
         }
     }
 }

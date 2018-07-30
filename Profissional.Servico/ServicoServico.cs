@@ -1,4 +1,5 @@
-﻿using Profissional.Repositorio;
+﻿using Profissional.Infra;
+using Profissional.Repositorio;
 using Profissional.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ namespace Profissional.Servico
 {
     public class ServicoServico : IServicoServico
     {
+        private ServicoRep Rep = new ServicoRep();
+
         public async Task<List<Dominio.Entidades.Servico>> Get()
         {
             try
@@ -31,6 +34,11 @@ namespace Profissional.Servico
 
                 throw new Exception("Erro ao efetuar requisição!");
             }
+        }
+
+        public List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional)
+        {
+            return Rep.GetByProfissional(idProfissional);
         }
 
         public async Task<List<Dominio.Entidades.Servico>> GetByServicoTipoId(int idTipo)

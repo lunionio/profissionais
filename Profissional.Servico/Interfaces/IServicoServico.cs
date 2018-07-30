@@ -8,5 +8,7 @@ namespace Profissional.Servico.Interfaces
         Task<List<Dominio.Entidades.Servico>> GetByServicoTipoId(int idTipo);
         Task<Dominio.Entidades.Servico> GetById(int id);
         Task<List<Dominio.Entidades.Servico>> Get();
+        List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional);
+
     }
 }
