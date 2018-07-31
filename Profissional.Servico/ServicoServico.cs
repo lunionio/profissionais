@@ -11,11 +11,15 @@ namespace Profissional.Servico
     {
         private ServicoRep Rep = new ServicoRep();
 
-        public async Task<List<Dominio.Entidades.Servico>> Get()
+        public async Task<List<Dominio.Entidades.Servico>> Get(string token, int idCliente)
         {
             try
             {
-                return await new ServicoRep().GetAll();
+                if (await SeguracaServ.validaTokenAsync(token))
+                    return await new ServicoRep().GetAll();
+                else
+                    throw new Exception("Requisição inválida");
+
             }
             catch (Exception ex)
             {
@@ -23,11 +27,14 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<Dominio.Entidades.Servico> GetById(int id)
+        public async Task<Dominio.Entidades.Servico> GetById(int id, string token, int idCliente)
         {
             try
             {
-                return await new ServicoRep().GetByIdAsync(id);
+                if (await SeguracaServ.validaTokenAsync(token))
+                    return await new ServicoRep().GetByIdAsync(id);
+                else
+                    throw new Exception("Requisição inválida");
             }
             catch (Exception)
             {
@@ -36,16 +43,31 @@ namespace Profissional.Servico
             }
         }
 
-        public List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional)
-        {
-            return Rep.GetByProfissional(idProfissional);
-        }
-
-        public async Task<List<Dominio.Entidades.Servico>> GetByServicoTipoId(int idTipo)
+        public  List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional, string token, int idCliente)
         {
             try
             {
-                return await new ServicoRep().GetByServicoTipoId(idTipo);
+                if ( SeguracaServ.validaToken(token))
+                    return Rep.GetByProfissional(idProfissional);
+                else
+                    throw new Exception("Requisição inválida");
+
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao efetuar requisição!");
+            }
+        }
+
+        public async Task<List<Dominio.Entidades.Servico>> GetByServicoTipoId(int idTipo, string token, int idCliente)
+        {
+            try
+            {
+                if (await SeguracaServ.validaTokenAsync(token))
+                    return await new ServicoRep().GetByServicoTipoId(idTipo);
+                else
+                    throw new Exception("Requisição inválida");
+
             }
             catch (Exception)
             {

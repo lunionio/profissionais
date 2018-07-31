@@ -12,31 +12,27 @@ namespace Profissional.Aplicacao.Controllers
     public class ServicoController : Controller
     {
 
-        public async Task<List<Dominio.Entidades.Servico>> Get()
+        public async Task<List<Dominio.Entidades.Servico>> Get(string token, int idCliente)
         {
-            return await new ServicoServico().Get();
+            return await new ServicoServico().Get(token, idCliente);
         }
 
-        public List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional)
+        public List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional, string token, int idCliente)
         {
-            return  new ServicoServico().GetByProfissional(idProfissional);
+            return  new ServicoServico().GetByProfissional(idProfissional, token, idCliente);
         }
 
         [HttpGet("{id}", Name = "GetById")]
-        public async Task<Dominio.Entidades.Servico> GetById(int id)
+        public async Task<Dominio.Entidades.Servico> GetById(int id, string token, int idCliente)
         {
-            return await new ServicoServico().GetById(id);
+            return await new ServicoServico().GetById(id, token, idCliente);
         }
 
-        public Task<List<Dominio.Entidades.Servico>> GetByServicoTipoId(int idTipo)
-        {
-            throw new System.NotImplementedException();
-        }
 
         [HttpGet("{id}", Name = "GetByTipo")]
-        public async Task<List<Dominio.Entidades.Servico>> GetByTipo(int idTipo)
+        public async Task<List<Dominio.Entidades.Servico>> GetByTipo(int idTipo, string token, int idCliente)
         {
-            return await new ServicoServico().GetByServicoTipoId(idTipo);
+            return await new ServicoServico().GetByServicoTipoId(idTipo, token, idCliente);
         }
     }
 }

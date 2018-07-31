@@ -9,11 +9,14 @@ namespace Profissional.Servico
 {
     public class ServicoTipoServico : IServicoTipoSerico
     {
-        public async Task<List<ServicoTipo>> Get()
+        public async Task<List<ServicoTipo>> Get(string token, int idCliente)
         {
             try
             {
-                return await new ServicoTipoRep().GetAll();
+                if (await SeguracaServ.validaTokenAsync(token))
+                    return await new ServicoTipoRep().GetAll();
+                else
+                    throw new Exception("Requisição inválida");
             }
             catch (Exception)
             {
@@ -22,11 +25,15 @@ namespace Profissional.Servico
 
         }
 
-        public async Task<ServicoTipo> Get(int id)
+        public async Task<ServicoTipo> Get(int id, string token, int idCliente)
         {
             try
             {
-                return await  new ServicoTipoRep().GetByIdAsync(id);
+                if (await SeguracaServ.validaTokenAsync(token))
+                    return await  new ServicoTipoRep().GetByIdAsync(id);
+                else
+                    throw new Exception("Requisição inválida");
+
             }
             catch (Exception)
             {

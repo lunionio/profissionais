@@ -13,16 +13,16 @@ namespace Profissional.Aplicacao.Controllers
     public class ServicoTipoController : Controller
     {
         [HttpGet]
-        public async Task<List<ServicoTipo>> GetAll()
+        public async Task<List<ServicoTipo>> GetAll(string token, int idCliente)
         {
-            return await new ServicoTipoServico().Get();
+            return await new ServicoTipoServico().Get(token, idCliente);
         }
 
 
         [HttpGet("{idCliente}", Name = "GetById")]
-        public async Task<ServicoTipo> GetById(int id)
+        public async Task<ServicoTipo> GetById(int id, string token, int idCliente)
         {
-            return await new ServicoTipoServico().Get(id);
+            return await new ServicoTipoServico().Get(id, token, idCliente);
         }
     }
 }
