@@ -21,9 +21,9 @@ namespace Profissional.Aplicacao.Controllers
         {
             return  new ServicoServico().GetByProfissional(idProfissional, token, idCliente);
         }
+        
 
-        [HttpGet("{id}", Name = "GetById")]
-        public async Task<Dominio.Entidades.Servico> GetById(int id, string token, int idCliente)
+        public async Task<Dominio.Entidades.Servico> Get(int id, string token, int idCliente)
         {
             return await new ServicoServico().GetById(id, token, idCliente);
         }

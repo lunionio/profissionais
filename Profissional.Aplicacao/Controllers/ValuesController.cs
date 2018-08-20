@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Profissional.Aplicacao.Controllers
 {
+
+
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {

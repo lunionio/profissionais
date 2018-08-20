@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "beb3c670b260490a1f8d6817888f6cd3e86e1391"
+    "signature": "af71e12bbbaec3760fda9babac1a801538cb1710"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,7 +9,8 @@
       "Profissional.Servico/1.0.0": {
         "dependencies": {
           "Profissional.Dominio": "1.0.0",
-          "Profissional.Repositorio": "1.0.0"
+          "Profissional.Repositorio": "1.0.0",
+          "RestSharp": "106.3.1"
         },
         "runtime": {
           "Profissional.Servico.dll": {}
@@ -181,6 +182,11 @@
         },
         "runtime": {
           "lib/netstandard1.0/Remotion.Linq.dll": {}
+        }
+      },
+      "RestSharp/106.3.1": {
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.dll": {}
         }
       },
       "runtime.native.System.Data.SqlClient.sni/4.4.0": {
@@ -639,6 +645,13 @@
       "sha512": "sha512-fK/76UmpC0FXBlGDFVPLJHQlDLYnGC+XY3eoDgCgbtrhi0vzbXDQ3n/IYHhqSKqXQfGw/u04A1drWs7rFVkRjw==",
       "path": "remotion.linq/2.2.0",
       "hashPath": "remotion.linq.2.2.0.nupkg.sha512"
+    },
+    "RestSharp/106.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TmlN7SXjK52zzpQDTuzw7IH3XQ2Svtss/4zvQBKIgf74QIVxvlxoAqQYu1EhNQ1bMSBIQ4aK120BO7W+v8/kiQ==",
+      "path": "restsharp/106.3.1",
+      "hashPath": "restsharp.106.3.1.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.4.0": {
       "type": "package",

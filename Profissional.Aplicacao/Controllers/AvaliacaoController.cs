@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Profissional.Dominio.Entidades;
 using Profissional.Servico;
@@ -8,7 +9,8 @@ using Profissional.Servico.Interfaces;
 namespace Profissional.Aplicacao.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Avaliacao")]
+    [Route("api/[controller]/[action]")]
+    [EnableCors("AllowAll")]
     public class AvaliacaoController : Controller, IAvaliacaoServico
     {
         public AvaliacaoServico _servico { get; set; }
