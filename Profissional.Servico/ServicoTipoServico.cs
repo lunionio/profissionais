@@ -9,7 +9,7 @@ namespace Profissional.Servico
 {
     public class ServicoTipoServico : IServicoTipoSerico
     {
-        public async Task<List<ServicoTipo>> Get(string token, int idCliente)
+        public async Task<List<ServicoTipo>> Get(string token)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace Profissional.Servico
 
         }
 
-        public async Task<ServicoTipo> Get(int id, string token, int idCliente)
+        public async Task<ServicoTipo> Get(int id, string token)
         {
             try
             {

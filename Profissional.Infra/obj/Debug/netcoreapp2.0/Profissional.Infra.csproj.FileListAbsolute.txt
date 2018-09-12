@@ -22,3 +22,15 @@ C:\staffpro\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissiona
 C:\staffpro\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.csproj.CopyComplete
 C:\staffpro\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.dll
 C:\staffpro\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.pdb
+C:\Work\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Infra.deps.json
+C:\Work\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Infra.dll
+C:\Work\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Infra.pdb
+C:\Work\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Dominio.dll
+C:\Work\Profissionais\Profissional.Infra\bin\Debug\netcoreapp2.0\Profissional.Dominio.pdb
+C:\Work\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.csprojAssemblyReference.cache
+C:\Work\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.csproj.CoreCompileInputs.cache
+C:\Work\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.AssemblyInfoInputs.cache
+C:\Work\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.AssemblyInfo.cs
+C:\Work\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.csproj.CopyComplete
+C:\Work\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.dll
+C:\Work\Profissionais\Profissional.Infra\obj\Debug\netcoreapp2.0\Profissional.Infra.pdb

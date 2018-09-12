@@ -6,7 +6,7 @@ namespace Profissional.Servico.Interfaces
 {
     public interface IServicoTipoSerico
     {
-        Task<List<ServicoTipo>> Get(string token, int idCliente);
-        Task<ServicoTipo> Get(int id, string token, int idCliente);
+        Task<List<ServicoTipo>> Get(string token);
+        Task<ServicoTipo> Get(int id, string token);
     }
 }

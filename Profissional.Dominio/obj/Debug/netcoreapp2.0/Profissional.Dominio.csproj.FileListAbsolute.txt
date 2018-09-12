@@ -16,3 +16,12 @@ C:\staffpro\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissio
 C:\staffpro\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissional.Dominio.dll
 C:\staffpro\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissional.Dominio.pdb
 C:\staffpro\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissional.Dominio.csprojAssemblyReference.cache
+C:\Work\Profissionais\Profissional.Dominio\bin\Debug\netcoreapp2.0\Profissional.Dominio.deps.json
+C:\Work\Profissionais\Profissional.Dominio\bin\Debug\netcoreapp2.0\Profissional.Dominio.dll
+C:\Work\Profissionais\Profissional.Dominio\bin\Debug\netcoreapp2.0\Profissional.Dominio.pdb
+C:\Work\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissional.Dominio.csprojAssemblyReference.cache
+C:\Work\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissional.Dominio.csproj.CoreCompileInputs.cache
+C:\Work\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissional.Dominio.AssemblyInfoInputs.cache
+C:\Work\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissional.Dominio.AssemblyInfo.cs
+C:\Work\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissional.Dominio.dll
+C:\Work\Profissionais\Profissional.Dominio\obj\Debug\netcoreapp2.0\Profissional.Dominio.pdb

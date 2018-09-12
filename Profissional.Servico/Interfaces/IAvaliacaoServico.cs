@@ -6,13 +6,13 @@ namespace Profissional.Servico.Interfaces
 {
     public interface IAvaliacaoServico
     {
-        Task<List<Avaliacao>> GetByOportunidade(int idOportunidade);
-        Task<List<Avaliacao>> GetByCodigoExterno(int codigoExterno);
-        Task<List<Avaliacao>> GetByAvaliador(int idAvaliador);
-        Task<List<Avaliacao>> GetByAvaliado(int idAvaliado);
-        Task<List<Avaliacao>> GetAllAsync();
+        Task<List<Avaliacao>> GetByOportunidade(int idOportunidade, string token);
+        Task<List<Avaliacao>> GetByCodigoExterno(int codigoExterno, string token);
+        Task<List<Avaliacao>> GetByAvaliador(int idAvaliador, string token);
+        Task<List<Avaliacao>> GetByAvaliado(int idAvaliado, string token);
+        Task<List<Avaliacao>> GetAllAsync(string token);
 
-        int Cadastrar(Avaliacao obj);
+        int Cadastrar(Avaliacao obj, string token);
 
     }
 }

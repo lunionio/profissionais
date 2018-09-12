@@ -12,17 +12,16 @@ namespace Profissional.Aplicacao.Controllers
     [EnableCors("AllowAll")]
     public class ServicoTipoController : Controller
     {
-        [HttpGet]
-        public async Task<List<ServicoTipo>> GetAll(string token, int idCliente)
+        [HttpGet("{token}")]
+        public async Task<List<ServicoTipo>> GetAll([FromRoute]string token)
         {
-            return await new ServicoTipoServico().Get(token, idCliente);
+            return await new ServicoTipoServico().Get(token);
         }
 
-
-        [HttpGet("{idCliente}", Name = "GetById")]
-        public async Task<ServicoTipo> GetById(int id, string token, int idCliente)
+        [HttpGet("{id:int}/{token}", Name = "GetById")]
+        public async Task<ServicoTipo> GetById([FromRoute]int id, [FromRoute]string token)
         {
-            return await new ServicoTipoServico().Get(id, token, idCliente);
+            return await new ServicoTipoServico().Get(id, token);
         }
     }
 }

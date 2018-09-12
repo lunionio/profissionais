@@ -11,28 +11,28 @@ namespace Profissional.Aplicacao.Controllers
     [EnableCors("AllowAll")]
     public class ServicoController : Controller
     {
-
-        public async Task<List<Dominio.Entidades.Servico>> Get(string token, int idCliente)
+        [HttpGet("{token}")]
+        public async Task<List<Dominio.Entidades.Servico>> Get([FromRoute]string token)
         {
-            return await new ServicoServico().Get(token, idCliente);
+            return await new ServicoServico().Get(token);
         }
 
-        public List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional, string token, int idCliente)
+        [HttpGet("{idProfissional:int}/{token}")]
+        public List<Dominio.Entidades.Servico> GetByProfissional([FromRoute]int idProfissional, [FromRoute]string token)
         {
-            return  new ServicoServico().GetByProfissional(idProfissional, token, idCliente);
+            return  new ServicoServico().GetByProfissional(idProfissional, token);
         }
         
-
-        public async Task<Dominio.Entidades.Servico> Get(int id, string token, int idCliente)
+        [HttpGet("{id:int}/{token}")]
+        public async Task<Dominio.Entidades.Servico> Get([FromRoute]int id, [FromRoute]string token)
         {
-            return await new ServicoServico().GetById(id, token, idCliente);
+            return await new ServicoServico().GetById(id, token);
         }
 
-
-        [HttpGet("{id}", Name = "GetByTipo")]
-        public async Task<List<Dominio.Entidades.Servico>> GetByTipo(int idTipo, string token, int idCliente)
+        [HttpGet("{idTipo:int}/{token}", Name = "GetByTipo")]
+        public async Task<List<Dominio.Entidades.Servico>> GetByTipo(int idTipo, string token)
         {
-            return await new ServicoServico().GetByServicoTipoId(idTipo, token, idCliente);
+            return await new ServicoServico().GetByServicoTipoId(idTipo, token);
         }
     }
 }

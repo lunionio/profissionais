@@ -664,23 +664,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Felipe\\.nuget\\packages\\": {},
+    "C:\\Users\\Dev01\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\staffpro\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj",
+      "projectUniqueName": "C:\\Work\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj",
       "projectName": "Profissional.Dominio",
-      "projectPath": "C:\\staffpro\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj",
-      "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
-      "outputPath": "C:\\staffpro\\Profissionais\\Profissional.Dominio\\obj\\",
+      "projectPath": "C:\\Work\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj",
+      "packagesPath": "C:\\Users\\Dev01\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\Profissionais\\Profissional.Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dev01\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -11,7 +11,7 @@ namespace Profissional.Servico
     {
         private ServicoRep Rep = new ServicoRep();
 
-        public async Task<List<Dominio.Entidades.Servico>> Get(string token, int idCliente)
+        public async Task<List<Dominio.Entidades.Servico>> Get(string token)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<Dominio.Entidades.Servico> GetById(int id, string token, int idCliente)
+        public async Task<Dominio.Entidades.Servico> GetById(int id, string token)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace Profissional.Servico
             }
         }
 
-        public  List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional, string token, int idCliente)
+        public  List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional, string token)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<List<Dominio.Entidades.Servico>> GetByServicoTipoId(int idTipo, string token, int idCliente)
+        public async Task<List<Dominio.Entidades.Servico>> GetByServicoTipoId(int idTipo, string token)
         {
             try
             {

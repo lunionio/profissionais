@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Profissional.Dominio.Entidades;
-using Profissional.Dominio.Interfaces;
 using Profissional.Servico;
 using Profissional.Servico.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Profissional.Aplicacao.Controllers
 {
@@ -19,24 +15,28 @@ namespace Profissional.Aplicacao.Controllers
     {
         private ProfissionalServicoServico _servico = new ProfissionalServicoServico();
 
-        public void Alterar(ProfissionalServico obj)
+        [HttpPut("{token}")]
+        public void Alterar([FromBody]ProfissionalServico obj, [FromRoute]string token)
         {
-            _servico.Alterar(obj);
+            _servico.Alterar(obj, token);
         }
 
-        public int Cadastrar(ProfissionalServico obj)
+        [HttpPost("{token}")]
+        public int Cadastrar([FromBody]ProfissionalServico obj, [FromRoute]string token)
         {
-            return _servico.Cadastrar(obj);
+            return _servico.Cadastrar(obj, token);
         }
 
-        public async Task<List<ProfissionalServico>> GetAll()
+        [HttpGet("{token}")]
+        public async Task<List<ProfissionalServico>> GetAll([FromRoute]string token)
         {
-            return await _servico.GetAll();
+            return await _servico.GetAll(token);
         }
 
-        public void Remover(ProfissionalServico obj)
+        [HttpDelete("{token}")]
+        public void Remover([FromBody]ProfissionalServico obj, [FromRoute]string token)
         {
-            _servico.Remover(obj);
+            _servico.Remover(obj, token);
         }
     }
 }
