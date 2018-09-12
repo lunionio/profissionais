@@ -3,6 +3,7 @@ using Profissional.Repositorio;
 using Profissional.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Profissional.Servico
@@ -11,12 +12,12 @@ namespace Profissional.Servico
     {
         private ServicoRep Rep = new ServicoRep();
 
-        public async Task<List<Dominio.Entidades.Servico>> Get(string token)
+        public async Task<List<Dominio.Entidades.Servico>> Get(string token, int idCliente)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
-                    return await new ServicoRep().GetAll();
+                    return (await new ServicoRep().GetAll()).Where(s => s.IdCliente.Equals(idCliente)).ToList();
                 else
                     throw new Exception("Requisição inválida");
 
@@ -27,12 +28,12 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<Dominio.Entidades.Servico> GetById(int id, string token)
+        public async Task<Dominio.Entidades.Servico> GetById(int id, string token, int idCliente)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
-                    return await new ServicoRep().GetByIdAsync(id);
+                    return await new ServicoRep().GetByIdAsync(id, idCliente);
                 else
                     throw new Exception("Requisição inválida");
             }
@@ -43,12 +44,12 @@ namespace Profissional.Servico
             }
         }
 
-        public  List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional, string token)
+        public  List<Dominio.Entidades.Servico> GetByProfissional(int idProfissional, string token, int idCliente)
         {
             try
             {
                 if ( SeguracaServ.validaToken(token))
-                    return Rep.GetByProfissional(idProfissional);
+                    return Rep.GetByProfissional(idProfissional, idCliente);
                 else
                     throw new Exception("Requisição inválida");
 
@@ -59,12 +60,12 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<List<Dominio.Entidades.Servico>> GetByServicoTipoId(int idTipo, string token)
+        public async Task<List<Dominio.Entidades.Servico>> GetByServicoTipoId(int idTipo, string token, int idCliente)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
-                    return await new ServicoRep().GetByServicoTipoId(idTipo);
+                    return await new ServicoRep().GetByServicoTipoId(idTipo, idCliente);
                 else
                     throw new Exception("Requisição inválida");
 

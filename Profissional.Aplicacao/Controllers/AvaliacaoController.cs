@@ -26,34 +26,34 @@ namespace Profissional.Aplicacao.Controllers
             return _servico.Cadastrar(obj, token);
         }
 
-        [HttpGet("{idAvaliado:int}/{token}", Name = "GetByAvaliado")]
-        public Task<List<Avaliacao>> GetByAvaliado([FromRoute]int idAvaliado, [FromRoute]string token)
+        [HttpGet("{idCliente:int}/{idAvaliado:int}/{token}", Name = "GetByAvaliado")]
+        public Task<List<Avaliacao>> GetByAvaliado([FromRoute]int idAvaliado, [FromRoute]string token, [FromRoute]int idCliente)
         {
-            return _servico.GetByAvaliado(idAvaliado, token);
+            return _servico.GetByAvaliado(idAvaliado, token, idCliente);
         }
 
-        [HttpGet("{idAvaliador:int}/{token}", Name = "GetByAvaliador")]
-        public Task<List<Avaliacao>> GetByAvaliador([FromRoute]int idAvaliador, [FromRoute]string token)
+        [HttpGet("{idCliente:int}/{idAvaliador:int}/{token}", Name = "GetByAvaliador")]
+        public Task<List<Avaliacao>> GetByAvaliador([FromRoute]int idAvaliador, [FromRoute]string token, [FromRoute]int idCliente)
         {
-            return _servico.GetByAvaliador(idAvaliador, token);
+            return _servico.GetByAvaliador(idAvaliador, token, idCliente);
         }
 
-        [HttpGet("{codigoExterno:int}/{token}", Name = "GetByCodigoExterno")]
-        public Task<List<Avaliacao>> GetByCodigoExterno([FromRoute]int codigoExterno, [FromRoute]string token)
+        [HttpGet("{idCliente:int}/{codigoExterno:int}/{token}", Name = "GetByCodigoExterno")]
+        public Task<List<Avaliacao>> GetByCodigoExterno([FromRoute]int codigoExterno, [FromRoute]string token, [FromRoute]int idCliente)
         {
-            return _servico.GetByCodigoExterno(codigoExterno, token);
+            return _servico.GetByCodigoExterno(codigoExterno, token, idCliente);
         }
 
-        [HttpGet("{idOportunidade:int}/{token}", Name = "GetByOportunidade")]
-        public Task<List<Avaliacao>> GetByOportunidade([FromRoute]int idOportunidade, [FromRoute]string token)
+        [HttpGet("{idCliente:int}/{idOportunidade:int}/{token}", Name = "GetByOportunidade")]
+        public Task<List<Avaliacao>> GetByOportunidade([FromRoute]int idOportunidade, [FromRoute]string token, [FromRoute]int idCliente)
         {
-            return _servico.GetByOportunidade(idOportunidade, token);
+            return _servico.GetByOportunidade(idOportunidade, token, idCliente);
         }
 
-        [HttpGet("{token}")]
-        public async Task<List<Avaliacao>> GetAllAsync([FromRoute]string token)
+        [HttpGet("{idCliente:int}/{token}")]
+        public async Task<List<Avaliacao>> GetAllAsync([FromRoute]string token, [FromRoute]int idCliente)
         {
-            return await _servico.GetAllAsync(token);
+            return await _servico.GetAllAsync(token, idCliente);
         }
     }
 }

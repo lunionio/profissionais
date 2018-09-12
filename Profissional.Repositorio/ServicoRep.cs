@@ -15,14 +15,16 @@ namespace Profissional.Repositorio
 
         private Contexto db = new Contexto();
 
-        public async Task<Servico> GetByIdAsync(int id)
+        public async Task<Servico> GetByIdAsync(int id, int idCliente)
         {
-            return await db.Servico.FirstAsync(c => c.ID == id && c.Ativo == true);
+            return await db.Servico.FirstAsync(c => c.ID == id 
+            && c.Ativo == true && c.IdCliente.Equals(idCliente));
         }
 
-        public List<Servico> GetByProfissional(int idProfissional)
+        public List<Servico> GetByProfissional(int idProfissional, int idCliente)
         {
-            var ids = db.ProfissionalServico.Where(c => c.UsuarioId == idProfissional && c.Ativo == true).ToList();
+            var ids = db.ProfissionalServico.Where(c => c.UsuarioId == idProfissional 
+            && c.Ativo == true && c.IdCliente.Equals(idCliente)).ToList();
 
             var list = new List<Servico>();
             foreach (var item in ids)
@@ -33,9 +35,10 @@ namespace Profissional.Repositorio
         }
 
 
-        public async Task<List<Servico>> GetByServicoTipoId(int idTipo)
+        public async Task<List<Servico>> GetByServicoTipoId(int idTipo, int idCliente)
         {
-            return await new Contexto().Servico.Where(c => c.ServicoTipoId == idTipo && c.Ativo == true).ToListAsync();
+            return await new Contexto().Servico.Where(c => c.ServicoTipoId == idTipo 
+            && c.Ativo == true && c.IdCliente.Equals(idCliente)).ToListAsync();
         }
 
 

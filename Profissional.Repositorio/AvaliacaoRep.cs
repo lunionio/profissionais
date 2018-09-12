@@ -13,31 +13,34 @@ namespace Profissional.Repositorio
     {
         private Contexto db = new Contexto();
 
-
-
-        public async Task<List<Avaliacao>> GetByAvaliado(int idAvaliado)
+        public async Task<List<Avaliacao>> GetByAvaliado(int idAvaliado, int idCliente)
         {
-            return await db.Avaliacao.Where(c => c.UsuarioAvaliadoId == idAvaliado && c.Ativo == true).ToListAsync();
+            return await db.Avaliacao.Where(c => c.UsuarioAvaliadoId == idAvaliado 
+                && c.Ativo == true && c.IdCliente.Equals(idCliente)).ToListAsync();
         }
 
-        public async Task<List<Avaliacao>> GetByAvaliadorAsync(int idAvaliador)
+        public async Task<List<Avaliacao>> GetByAvaliadorAsync(int idAvaliador, int idCliente)
         {
-            return await db.Avaliacao.Where(c => c.UsuarioAvaliadorId == idAvaliador && c.Ativo == true).ToListAsync();
+            return await db.Avaliacao.Where(c => c.UsuarioAvaliadorId == idAvaliador 
+            && c.Ativo == true && c.IdCliente.Equals(idCliente)).ToListAsync();
         }
 
-        public async Task<List<Avaliacao>> GetByCodigoExterno(int codigoExterno)
+        public async Task<List<Avaliacao>> GetByCodigoExterno(int codigoExterno, int idCliente)
         {
-            return await db.Avaliacao.Where(c => c.CodigoExterno == codigoExterno && c.Ativo == true).ToListAsync();
+            return await db.Avaliacao.Where(c => c.CodigoExterno == codigoExterno 
+            && c.Ativo == true && c.IdCliente.Equals(idCliente)).ToListAsync();
         }
 
-        public async Task<Avaliacao> GetById(int id)
+        public async Task<Avaliacao> GetById(int id, int idCliente)
         {
-            return await db.Avaliacao.FirstAsync(c => c.ID == id && c.Ativo == true);
+            return await db.Avaliacao.FirstAsync(c => c.ID == id 
+            && c.Ativo == true && c.IdCliente.Equals(idCliente));
         }
 
-        public async Task<List<Avaliacao>> GetByOportunidade(int idOportunidade)
+        public async Task<List<Avaliacao>> GetByOportunidade(int idOportunidade, int idCliente)
         {
-            return await db.Avaliacao.Where(c => c.OportunidadeId == idOportunidade && c.Ativo == true).ToListAsync();
+            return await db.Avaliacao.Where(c => c.OportunidadeId == idOportunidade 
+            && c.Ativo == true && c.IdCliente.Equals(idCliente)).ToListAsync();
         }
     }
 }

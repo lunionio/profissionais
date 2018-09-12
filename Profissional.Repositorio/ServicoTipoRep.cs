@@ -11,9 +11,9 @@ namespace Profissional.Repositorio
     {
         private Contexto db = new Contexto();
 
-        public async Task<ServicoTipo> GetByIdAsync(int id)
+        public async Task<ServicoTipo> GetByIdAsync(int id, int idCliente)
         {
-            return await db.ServicoTipo.FirstAsync(c => c.ID == id);
+            return await db.ServicoTipo.FirstAsync(c => c.ID == id && c.IdCliente.Equals(idCliente));
         }
     }
 }

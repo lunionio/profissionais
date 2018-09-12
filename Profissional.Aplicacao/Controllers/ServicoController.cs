@@ -11,28 +11,28 @@ namespace Profissional.Aplicacao.Controllers
     [EnableCors("AllowAll")]
     public class ServicoController : Controller
     {
-        [HttpGet("{token}")]
-        public async Task<List<Dominio.Entidades.Servico>> Get([FromRoute]string token)
+        [HttpGet("{idCliente:int}/{token}")]
+        public async Task<List<Dominio.Entidades.Servico>> Get([FromRoute]string token, [FromRoute]int idCliente)
         {
-            return await new ServicoServico().Get(token);
+            return await new ServicoServico().Get(token, idCliente);
         }
 
-        [HttpGet("{idProfissional:int}/{token}")]
-        public List<Dominio.Entidades.Servico> GetByProfissional([FromRoute]int idProfissional, [FromRoute]string token)
+        [HttpGet("{idCliente:int}/{idProfissional:int}/{token}")]
+        public List<Dominio.Entidades.Servico> GetByProfissional([FromRoute]int idProfissional, [FromRoute]string token, [FromRoute]int idCliente)
         {
-            return  new ServicoServico().GetByProfissional(idProfissional, token);
+            return  new ServicoServico().GetByProfissional(idProfissional, token, idCliente);
         }
         
-        [HttpGet("{id:int}/{token}")]
-        public async Task<Dominio.Entidades.Servico> Get([FromRoute]int id, [FromRoute]string token)
+        [HttpGet("{idCliente:int}/{id:int}/{token}")]
+        public async Task<Dominio.Entidades.Servico> GetById([FromRoute]int id, [FromRoute]string token, [FromRoute]int idCliente)
         {
-            return await new ServicoServico().GetById(id, token);
+            return await new ServicoServico().GetById(id, token, idCliente);
         }
 
-        [HttpGet("{idTipo:int}/{token}", Name = "GetByTipo")]
-        public async Task<List<Dominio.Entidades.Servico>> GetByTipo(int idTipo, string token)
+        [HttpGet("{idCliente:int}/{idTipo:int}/{token}", Name = "GetByTipo")]
+        public async Task<List<Dominio.Entidades.Servico>> GetByTipo(int idTipo, string token, int idCliente)
         {
-            return await new ServicoServico().GetByServicoTipoId(idTipo, token);
+            return await new ServicoServico().GetByServicoTipoId(idTipo, token, idCliente);
         }
     }
 }

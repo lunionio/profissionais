@@ -6,8 +6,8 @@ namespace Profissional.Dominio.Interfaces
 {
     public interface IServico
     {
-        Task<Servico> GetByIdAsync(int id);
-        Task<List<Servico>> GetByServicoTipoId(int idTipo);
-        List<Servico> GetByProfissional(int idProfissional);
+        Task<Servico> GetByIdAsync(int id, int idCliente);
+        Task<List<Servico>> GetByServicoTipoId(int idTipo, int idCliente);
+        List<Servico> GetByProfissional(int idProfissional, int idCliente);
     }
 }

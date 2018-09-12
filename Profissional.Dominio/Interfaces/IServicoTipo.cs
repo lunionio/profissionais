@@ -5,6 +5,6 @@ namespace Profissional.Dominio.Interfaces
 {
     public  interface IServicoTipo: IBase<ServicoTipo>
     {
-        Task<ServicoTipo> GetByIdAsync(int id);
+        Task<ServicoTipo> GetByIdAsync(int id, int idCliente);
     }
 }

@@ -27,10 +27,10 @@ namespace Profissional.Aplicacao.Controllers
             return _servico.Cadastrar(obj, token);
         }
 
-        [HttpGet("{token}")]
-        public async Task<List<ProfissionalServico>> GetAll([FromRoute]string token)
+        [HttpGet("{idCliente:int}/{token}")]
+        public async Task<List<ProfissionalServico>> GetAll([FromRoute]string token, [FromRoute]int idCliente)
         {
-            return await _servico.GetAll(token);
+            return await _servico.GetAll(token, idCliente);
         }
 
         [HttpDelete("{token}")]

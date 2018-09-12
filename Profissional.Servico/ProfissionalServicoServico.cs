@@ -3,6 +3,7 @@ using Profissional.Repositorio;
 using Profissional.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,12 +51,12 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<List<ProfissionalServico>> GetAll(string token)
+        public async Task<List<ProfissionalServico>> GetAll(string token, int idCliente)
         {
             try
             {
                 if (SeguracaServ.validaToken(token))
-                    return await _Rep.GetAll();
+                    return (await _Rep.GetAll()).Where(ps => ps.IdCliente.Equals(idCliente)).ToList();
                 else
                     throw new Exception("Token inválido!");
             }
