@@ -9,6 +9,9 @@ namespace Profissional.Infra
         public DbSet<Servico> Servico { get; set; }
         public DbSet<Avaliacao> Avaliacao { get; set; }
         public DbSet<ProfissionalServico> ProfissionalServico { get; set; }
+        public DbSet<Dominio.Entidades.Profissional> Profissional { get; set; }
+        public DbSet<Telefone> Telefone { get; set; }
+        public DbSet<Endereco> Endereco { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

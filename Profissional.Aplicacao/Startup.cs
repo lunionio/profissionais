@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Profissional.Repositorio;
+using Profissional.Servico;
 
 namespace Profissional.Aplicacao
 {
@@ -23,6 +19,13 @@ namespace Profissional.Aplicacao
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ProfissionalService>();
+            services.AddTransient<TelefoneService>();
+            services.AddTransient<EnderecoService>();
+            services.AddTransient<ProfissionalRepository>();
+            services.AddTransient<TelefoneRepository>();
+            services.AddTransient<EnderecoRepository>();
+
             services.AddMvc();
         }
 
