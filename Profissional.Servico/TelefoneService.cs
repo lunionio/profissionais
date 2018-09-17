@@ -1,5 +1,6 @@
 ﻿using Profissional.Dominio.Entidades;
 using Profissional.Repositorio;
+using Profissional.Servico.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Profissional.Servico
 {
-    public class TelefoneService
+    public class TelefoneService : IService<Telefone>
     {
         private readonly TelefoneRepository _tfRepository;
 
@@ -17,17 +18,19 @@ namespace Profissional.Servico
             _tfRepository = tfRepository;
         }
 
-        public async Task SaveAsync(Telefone telefone, string token)
+        public async Task<Telefone> SaveAsync(Telefone entity, string token)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    telefone.DataCriacao = DateTime.UtcNow;
-                    telefone.DataEdicao = DateTime.UtcNow;
-                    telefone.Ativo = true;
+                    entity.DataCriacao = DateTime.UtcNow;
+                    entity.DataEdicao = DateTime.UtcNow;
+                    entity.Ativo = true;
 
-                    var tfId = _tfRepository.Add(telefone);
+                    entity.ID = _tfRepository.Add(entity);
+
+                    return entity;
                 }
                 else
                 {
@@ -80,14 +83,16 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task UpdateAsync(Telefone telefone, string token)
+        public async Task<Telefone> UpdateAsync(Telefone entity, string token)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    telefone.DataEdicao = DateTime.UtcNow;
-                    _tfRepository.Update(telefone);
+                    entity.DataEdicao = DateTime.UtcNow;
+                    _tfRepository.Update(entity);
+
+                    return entity;
                 }
                 else
                 {
@@ -100,13 +105,13 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task RemoveAsync(Telefone telefone, string token)
+        public async Task RemoveAsync(Telefone entity, string token)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    _tfRepository.Remove(telefone);
+                    _tfRepository.Remove(entity);
                 }
                 else
                 {
@@ -114,6 +119,48 @@ namespace Profissional.Servico
                 }
             }
             catch(Exception e)
+            {
+                throw new Exception("Erro ao efetuar requisição!", e);
+            }
+        }
+
+        public async Task<IEnumerable<Telefone>> GetAllAsync(int idCliente, string token)
+        {
+            try
+            { 
+                if (await SeguracaServ.validaTokenAsync(token))
+                {
+                    var telefones = _tfRepository.GetList(e => e.IdCliente.Equals(idCliente));
+                    return telefones;
+                }
+                else
+                {
+                    throw new Exception("Token inválido!");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao efetuar requisição!", e);
+            }
+        }
+
+        public async Task<Telefone> GetByIdAsync(int entityId, int idCliente, string token)
+        {
+            try
+            {
+                if (await SeguracaServ.validaTokenAsync(token))
+                {
+                    var telefone = _tfRepository.GetList(e => e.IdCliente.Equals(idCliente) 
+                        && e.ID.Equals(entityId)).SingleOrDefault();
+
+                    return telefone;
+                }
+                else
+                {
+                    throw new Exception("Token inválido!");
+                }
+            }
+            catch (Exception e)
             {
                 throw new Exception("Erro ao efetuar requisição!", e);
             }

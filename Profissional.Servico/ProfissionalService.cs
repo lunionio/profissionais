@@ -1,5 +1,6 @@
 ﻿using Profissional.Dominio.Entidades;
 using Profissional.Repositorio;
+using Profissional.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Profissional.Servico
 {
-    public class ProfissionalService
+    public class ProfissionalService : IService<Dominio.Entidades.Profissional>
     {
         private readonly ProfissionalRepository _pfRepository;
 
@@ -16,21 +17,21 @@ namespace Profissional.Servico
             _pfRepository = profissionalRepository;
         }
 
-        public async Task<Dominio.Entidades.Profissional> SaveAsync(Dominio.Entidades.Profissional profissional, string token)
+        public async Task<Dominio.Entidades.Profissional> SaveAsync(Dominio.Entidades.Profissional entity, string token)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    profissional.DataCriacao = DateTime.UtcNow;
-                    profissional.DataEdicao = DateTime.UtcNow;
-                    profissional.Ativo = true;
-                    var pfId = _pfRepository.Add(profissional);
+                    entity.DataCriacao = DateTime.UtcNow;
+                    entity.DataEdicao = DateTime.UtcNow;
+                    entity.Ativo = true;
+                    var pfId = _pfRepository.Add(entity);
 
-                    profissional.Endereco.ProfissionalId = pfId;
-                    profissional.Telefone.ProfissionalId = pfId;
+                    entity.Endereco.ProfissionalId = pfId;
+                    entity.Telefone.ProfissionalId = pfId;
 
-                    return profissional;
+                    return entity;
                 }
                 else
                 {
@@ -63,13 +64,13 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<Dominio.Entidades.Profissional> GetByIdAsync(int profissionalId, int idCliente, string token)
+        public async Task<Dominio.Entidades.Profissional> GetByIdAsync(int entityId, int idCliente, string token)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    var result = _pfRepository.GetList(p => p.IdCliente.Equals(idCliente) && p.ID.Equals(profissionalId)).SingleOrDefault();
+                    var result = _pfRepository.GetList(p => p.IdCliente.Equals(idCliente) && p.ID.Equals(entityId)).SingleOrDefault();
                     return result;
                 }
                 else
@@ -83,16 +84,16 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<Dominio.Entidades.Profissional> UpdateAsync(Dominio.Entidades.Profissional profissional, string token)
+        public async Task<Dominio.Entidades.Profissional> UpdateAsync(Dominio.Entidades.Profissional entity, string token)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    profissional.DataEdicao = DateTime.UtcNow;
-                    _pfRepository.Update(profissional);
+                    entity.DataEdicao = DateTime.UtcNow;
+                    _pfRepository.Update(entity);
 
-                    return profissional;
+                    return entity;
                 }
                 else
                 {
@@ -105,13 +106,13 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task RemoveAsync(Dominio.Entidades.Profissional profissional, string token)
+        public async Task RemoveAsync(Dominio.Entidades.Profissional entity, string token)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    _pfRepository.Remove(profissional);
+                    _pfRepository.Remove(entity);
                 }
                 else
                 {

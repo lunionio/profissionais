@@ -1,5 +1,6 @@
 ﻿using Profissional.Dominio.Entidades;
 using Profissional.Repositorio;
+using Profissional.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Profissional.Servico
 {
-    public class EnderecoService
+    public class EnderecoService : IService<Endereco>
     {
         private readonly EnderecoRepository _repository;
 
@@ -16,17 +17,19 @@ namespace Profissional.Servico
             _repository = repository;
         }
 
-        public async Task SaveAsync(Endereco endereco, string token)
+        public async Task<Endereco> SaveAsync(Endereco entity, string token)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    endereco.DataCriacao = DateTime.UtcNow;
-                    endereco.DataEdicao = DateTime.UtcNow;
-                    endereco.Ativo = true;
+                    entity.DataCriacao = DateTime.UtcNow;
+                    entity.DataEdicao = DateTime.UtcNow;
+                    entity.Ativo = true;
 
-                    var edId = _repository.Add(endereco);
+                    entity.ID = _repository.Add(entity);
+
+                    return entity;
                 }
                 else
                 {
@@ -79,14 +82,16 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task UpdateAsync(Endereco endereco, string token)
+        public async Task<Endereco> UpdateAsync(Endereco entity, string token)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    endereco.DataEdicao = DateTime.UtcNow;
-                    _repository.Update(endereco);
+                    entity.DataEdicao = DateTime.UtcNow;
+                    _repository.Update(entity);
+
+                    return entity;
                 }
                 else
                 {
@@ -99,13 +104,13 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task RemoveAsync(Endereco endereco, string token)
+        public async Task RemoveAsync(Endereco entity, string token)
         {
             try
             {
                 if(await SeguracaServ.validaTokenAsync(token))
                 {
-                    _repository.Remove(endereco);
+                    _repository.Remove(entity);
                 }
                 else
                 {
@@ -113,6 +118,48 @@ namespace Profissional.Servico
                 }
             }
             catch(Exception e)
+            {
+                throw new Exception("Erro ao efetuar requisição!", e);
+            }
+        }
+
+        public async Task<IEnumerable<Endereco>> GetAllAsync(int idCliente, string token)
+        {
+            try
+            {
+                if(await SeguracaServ.validaTokenAsync(token))
+                {
+                    var enderecos = _repository.GetList(e => e.IdCliente.Equals(idCliente));
+                    return enderecos;
+                }
+                else
+                {
+                    throw new Exception("Token inválido!");
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Erro ao efetuar requisição!", e);
+            }
+        }
+
+        public async Task<Endereco> GetByIdAsync(int entityId, int idCliente, string token)
+        {
+            try
+            {
+                if(await SeguracaServ.validaTokenAsync(token))
+                {
+                    var endereco = _repository.GetList(e => e.ID.Equals(entityId) 
+                        && e.IdCliente.Equals(idCliente)).SingleOrDefault();
+
+                    return endereco;
+                }
+                else
+                {
+                    throw new Exception("Token inválido!");
+                }
+            }
+            catch (Exception e)
             {
                 throw new Exception("Erro ao efetuar requisição!", e);
             }
