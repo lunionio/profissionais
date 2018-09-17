@@ -25,6 +25,8 @@ namespace Profissional.Aplicacao
             services.AddTransient<ProfissionalRepository>();
             services.AddTransient<TelefoneRepository>();
             services.AddTransient<EnderecoRepository>();
+            services.AddTransient<FormacaoService>();
+            services.AddTransient<FormacaoRepository>();
 
             services.AddMvc();
         }
