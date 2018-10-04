@@ -3453,23 +3453,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dev01\\.nuget\\packages\\": {},
+    "C:\\Users\\gilbe_000\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\Profissionais\\Profissional.Repositorio\\Profissional.Repositorio.csproj",
+      "projectUniqueName": "C:\\Work\\WpProfissionais\\Profissional.Repositorio\\Profissional.Repositorio.csproj",
       "projectName": "Profissional.Repositorio",
-      "projectPath": "C:\\Work\\Profissionais\\Profissional.Repositorio\\Profissional.Repositorio.csproj",
-      "packagesPath": "C:\\Users\\Dev01\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\Profissionais\\Profissional.Repositorio\\obj\\",
+      "projectPath": "C:\\Work\\WpProfissionais\\Profissional.Repositorio\\Profissional.Repositorio.csproj",
+      "packagesPath": "C:\\Users\\gilbe_000\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\WpProfissionais\\Profissional.Repositorio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Dev01\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gilbe_000\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3482,11 +3482,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Work\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj": {
-              "projectPath": "C:\\Work\\Profissionais\\Profissional.Dominio\\Profissional.Dominio.csproj"
+            "C:\\Work\\WpProfissionais\\Profissional.Dominio\\Profissional.Dominio.csproj": {
+              "projectPath": "C:\\Work\\WpProfissionais\\Profissional.Dominio\\Profissional.Dominio.csproj"
             },
-            "C:\\Work\\Profissionais\\Profissional.Infra\\Profissional.Infra.csproj": {
-              "projectPath": "C:\\Work\\Profissionais\\Profissional.Infra\\Profissional.Infra.csproj"
+            "C:\\Work\\WpProfissionais\\Profissional.Infra\\Profissional.Infra.csproj": {
+              "projectPath": "C:\\Work\\WpProfissionais\\Profissional.Infra\\Profissional.Infra.csproj"
             }
           }
         }

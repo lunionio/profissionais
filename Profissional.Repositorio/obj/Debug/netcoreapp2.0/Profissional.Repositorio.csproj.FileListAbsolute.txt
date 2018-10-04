@@ -40,3 +40,17 @@ C:\Work\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissio
 C:\Work\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csproj.CopyComplete
 C:\Work\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.dll
 C:\Work\Profissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.pdb
+C:\Work\WpProfissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Repositorio.deps.json
+C:\Work\WpProfissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Repositorio.dll
+C:\Work\WpProfissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Repositorio.pdb
+C:\Work\WpProfissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Dominio.dll
+C:\Work\WpProfissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Infra.dll
+C:\Work\WpProfissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Dominio.pdb
+C:\Work\WpProfissionais\Profissional.Repositorio\bin\Debug\netcoreapp2.0\Profissional.Infra.pdb
+C:\Work\WpProfissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csprojAssemblyReference.cache
+C:\Work\WpProfissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csproj.CoreCompileInputs.cache
+C:\Work\WpProfissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.AssemblyInfoInputs.cache
+C:\Work\WpProfissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.AssemblyInfo.cs
+C:\Work\WpProfissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.csproj.CopyComplete
+C:\Work\WpProfissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.dll
+C:\Work\WpProfissionais\Profissional.Repositorio\obj\Debug\netcoreapp2.0\Profissional.Repositorio.pdb

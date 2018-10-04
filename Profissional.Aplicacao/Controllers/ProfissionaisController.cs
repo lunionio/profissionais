@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Profissional.Dominio.Entidades;
 using Profissional.Servico;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -108,6 +110,29 @@ namespace Profissional.Aplicacao.Controllers
                 return Ok("Profissional removido com sucesso.");
             }
             catch(Exception e)
+            {
+                return StatusCode(500, "Não foi possível completar a operação.");
+            }
+        }
+
+        [HttpPost("{idCliente:int}/{token}")]
+        public async Task<IActionResult> GetByIdsAsync([FromRoute]int idCliente, [FromRoute]string token, [FromBody]IEnumerable<Base> ids)
+        {
+            try
+            {
+                var profissionais = await _pfService.GetBYIdListAsync(idCliente, token, ids.Select(b => b.ID));
+                var telefones = await _tfService.GetAllAsync(profissionais.Select(p => p.ID).ToList(), token);
+                var enderecos = await _edService.GetAllAsync(profissionais.Select(p => p.ID).ToList(), token);
+
+                foreach (var profissional in profissionais)
+                {
+                    profissional.Telefone = telefones.FirstOrDefault(t => t.ProfissionalId.Equals(profissional.ID));
+                    profissional.Endereco = enderecos.FirstOrDefault(e => e.ProfissionalId.Equals(profissional.ID));
+                }
+
+                return Ok(profissionais);
+            }
+            catch (Exception e)
             {
                 return StatusCode(500, "Não foi possível completar a operação.");
             }

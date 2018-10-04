@@ -124,5 +124,26 @@ namespace Profissional.Servico
                 throw new Exception("Erro ao efetuar requisição!", e);
             }
         }
+
+        public async Task<IEnumerable<Dominio.Entidades.Profissional>> GetBYIdListAsync(int idCliente, string token, IEnumerable<int> ids)
+        {
+            try
+            {
+                if (await SeguracaServ.validaTokenAsync(token))
+                {
+                    var result = _pfRepository.GetList(p => ids.Contains(p.ID));
+                    return result;
+                }
+                else
+                {
+                    throw new Exception("Token inválido.");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao efetuar requisição!", e);
+            }
+
+        }
     }
 }
