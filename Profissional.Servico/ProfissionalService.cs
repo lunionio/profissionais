@@ -23,13 +23,20 @@ namespace Profissional.Servico
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    entity.DataCriacao = DateTime.UtcNow;
-                    entity.DataEdicao = DateTime.UtcNow;
-                    entity.Ativo = true;
-                    var pfId = _pfRepository.Add(entity);
+                    if (entity.ID == 0)
+                    {
+                        entity.DataCriacao = DateTime.UtcNow;
+                        entity.DataEdicao = DateTime.UtcNow;
+                        entity.Ativo = true;
+                        var pfId = _pfRepository.Add(entity);
 
-                    entity.Endereco.ProfissionalId = pfId;
-                    entity.Telefone.ProfissionalId = pfId;
+                        entity.Endereco.ProfissionalId = pfId;
+                        entity.Telefone.ProfissionalId = pfId;
+                    }
+                    else
+                    {
+                        entity = await UpdateAsync(entity, token);
+                    }
 
                     return entity;
                 }

@@ -98,7 +98,7 @@ namespace Profissional.Aplicacao.Controllers
             }
         }
 
-        [HttpDelete("{token}")]
+        [HttpPost("{token}")]
         public async Task<IActionResult> DeleteAsync([FromBody]Dominio.Entidades.Profissional profissional, [FromRoute]string token)
         {
             try

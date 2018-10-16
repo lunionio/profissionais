@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Profissional.Aplicacao.Helpers;
 
 namespace Profissional.Aplicacao
 {
@@ -14,12 +15,24 @@ namespace Profissional.Aplicacao
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
-        }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            MainAsync().Wait();
+
+        }
+        static async Task MainAsync()
+        {
+            var url = await AuxNotStatic.GetInfoMotorAux("wpProfissionais", 1);
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseUrls(url.Url)
+                // .UseUrls("http://localhost.com:5300")
+                .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseApplicationInsights()
                 .Build();
+
+            host.Run();
+        }
     }
 }
