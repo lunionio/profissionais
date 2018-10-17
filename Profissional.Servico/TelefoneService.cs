@@ -24,11 +24,18 @@ namespace Profissional.Servico
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    entity.DataCriacao = DateTime.UtcNow;
-                    entity.DataEdicao = DateTime.UtcNow;
-                    entity.Ativo = true;
+                    if (entity.ID == 0)
+                    {
+                        entity.DataCriacao = DateTime.UtcNow;
+                        entity.DataEdicao = DateTime.UtcNow;
+                        entity.Ativo = true;
 
-                    entity.ID = _tfRepository.Add(entity);
+                        entity.ID = _tfRepository.Add(entity);
+                    }
+                    else
+                    {
+                        entity = await UpdateAsync(entity, token);
+                    }
 
                     return entity;
                 }

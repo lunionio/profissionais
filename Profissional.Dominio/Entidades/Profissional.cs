@@ -10,5 +10,6 @@ namespace Profissional.Dominio.Entidades
         public Endereco Endereco { get; set; }
         public Telefone Telefone { get; set; }
         public IList<ProfissionalFormacao> Formacoes { get; set; }
+        public int IdUsuario { get; set; }
     }
 }
