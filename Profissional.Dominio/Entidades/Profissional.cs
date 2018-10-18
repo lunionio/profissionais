@@ -11,5 +11,6 @@ namespace Profissional.Dominio.Entidades
         public Telefone Telefone { get; set; }
         public IList<ProfissionalFormacao> Formacoes { get; set; }
         public int IdUsuario { get; set; }
+        public DateTime DataNascimento { get; set; }
     }
 }
