@@ -26,7 +26,7 @@ namespace Profissional.Aplicacao
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseUrls(url.Url)
-                // .UseUrls("http://localhost.com:5300")
+                 //.UseUrls("http://localhost.com:5300")
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .UseApplicationInsights()

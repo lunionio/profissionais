@@ -46,17 +46,17 @@ namespace Profissional.Aplicacao.Controllers
         {
             try
             {
-                var profissionais = await _pfService.GetAllAsync(idCliente, token);
-                var telefones = await _tfService.GetAllAsync(profissionais.Select(p => p.ID).ToList(), token);
-                var enderecos = await _edService.GetAllAsync(profissionais.Select(p => p.ID).ToList(), token);
+                var pServicos = await _pfService.GetProfissionalServicos(idCliente, token);
+                var telefones = await _tfService.GetAllAsync(pServicos.Select(p => p.Profissional.ID).ToList(), token);
+                var enderecos = await _edService.GetAllAsync(pServicos.Select(p => p.Profissional.ID).ToList(), token);
 
-                foreach (var profissional in profissionais)
+                foreach (var s in pServicos)
                 {
-                    profissional.Telefone = telefones.FirstOrDefault(t => t.ProfissionalId.Equals(profissional.ID));
-                    profissional.Endereco = enderecos.FirstOrDefault(e => e.ProfissionalId.Equals(profissional.ID));
+                    s.Profissional.Telefone = telefones.FirstOrDefault(t => t.ProfissionalId.Equals(s.Profissional.ID));
+                    s.Profissional.Endereco = enderecos.FirstOrDefault(e => e.ProfissionalId.Equals(s.Profissional.ID));
                 }
 
-                return Ok(profissionais);
+                return Ok(pServicos);
             }
             catch(Exception e)
             {
@@ -69,11 +69,11 @@ namespace Profissional.Aplicacao.Controllers
         {
             try
             {
-                var profissional = await _pfService.GetByIdAsync(idProfissional, idCliente, token);
-                profissional.Endereco = await _edService.GetByPfIdAsync(profissional.ID, token);
-                profissional.Telefone = await _tfService.GetByPfIdAsync(profissional.ID, token);
+                var pService = await _pfService.GetProfissionalServicoByIdAsync(idProfissional, idCliente, token);
+                pService.Profissional.Endereco = await _edService.GetByPfIdAsync(pService.Profissional.ID, token);
+                pService.Profissional.Telefone = await _tfService.GetByPfIdAsync(pService.Profissional.ID, token);
 
-                return Ok(profissional);
+                return Ok(pService);
             }
             catch(Exception e)
             {

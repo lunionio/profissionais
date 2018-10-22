@@ -27,6 +27,8 @@ namespace Profissional.Aplicacao
             services.AddTransient<EnderecoRepository>();
             services.AddTransient<FormacaoService>();
             services.AddTransient<FormacaoRepository>();
+            services.AddTransient<ProfissionalServicoRep>();
+            services.AddTransient<ServicoRep>();
 
             services.AddMvc();
         }

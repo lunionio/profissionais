@@ -10,11 +10,15 @@ namespace Profissional.Servico
 {
     public class ProfissionalService : IService<Dominio.Entidades.Profissional>
     {
+        private readonly ProfissionalServicoRep _servicoRep;
         private readonly ProfissionalRepository _pfRepository;
+        private readonly ServicoRep _sRep;
 
-        public ProfissionalService(ProfissionalRepository profissionalRepository)
+        public ProfissionalService(ProfissionalRepository profissionalRepository, ProfissionalServicoRep pServicoRep, ServicoRep servicoRep)
         {
             _pfRepository = profissionalRepository;
+            _servicoRep = pServicoRep;
+            _sRep = servicoRep;
         }
 
         public async Task<Dominio.Entidades.Profissional> SaveAsync(Dominio.Entidades.Profissional entity, string token)
@@ -71,6 +75,39 @@ namespace Profissional.Servico
             }
         }
 
+        public async Task<IEnumerable<ProfissionalServico>> GetProfissionalServicos(int idCliente, string token)
+        {
+            try
+            {
+                if (await SeguracaServ.validaTokenAsync(token))
+                {
+                    var profissionais = _pfRepository.GetList(p => p.IdCliente.Equals(idCliente));
+                    var pIds = profissionais.Select(x => x.ID);
+
+                    var pServicos = _servicoRep.GetList(x => pIds.Contains(x.UsuarioId));
+                    var sIds = pServicos.Select(x => x.ServicoId);
+
+                    var servicos = _sRep.GetList(s => sIds.Contains(s.ID));
+
+                    foreach (var item in pServicos)
+                    {
+                        item.Profissional = profissionais.FirstOrDefault(p => p.ID.Equals(item.UsuarioId));
+                        item.Servico = servicos.FirstOrDefault(s => s.ID.Equals(item.ServicoId));
+                    }
+
+                    return pServicos;
+                }
+                else
+                {
+                    throw new Exception("Token inválido!");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao efetuar requisição!", e);
+            }
+        }
+
         public async Task<Dominio.Entidades.Profissional> GetByIdAsync(int entityId, int idCliente, string token)
         {
             try
@@ -86,6 +123,33 @@ namespace Profissional.Servico
                 }
             }
             catch(Exception e)
+            {
+                throw new Exception("Erro ao efetuar requisição!", e);
+            }
+        }
+
+        public async Task<ProfissionalServico> GetProfissionalServicoByIdAsync(int entityId, int idCliente, string token)
+        {
+            try
+            {
+                if (await SeguracaServ.validaTokenAsync(token))
+                {
+                    var result = _pfRepository.GetList(p => p.IdCliente.Equals(idCliente) && p.ID.Equals(entityId)).SingleOrDefault();
+                    var pServico = _servicoRep.GetList(x => x.UsuarioId.Equals(result.ID)).FirstOrDefault();
+
+                    var servico = _sRep.GetList(s => s.ID.Equals(pServico.ServicoId)).FirstOrDefault();
+
+                    pServico.Servico = servico;
+                    pServico.Profissional = result;
+
+                    return pServico;
+                }
+                else
+                {
+                    throw new Exception("Token inválido.");
+                }
+            }
+            catch (Exception e)
             {
                 throw new Exception("Erro ao efetuar requisição!", e);
             }
