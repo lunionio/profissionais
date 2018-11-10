@@ -17,7 +17,10 @@ namespace Profissional.Servico
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
-                    return (await new ServicoRep().GetAll()).Where(s => s.IdCliente.Equals(idCliente)).ToList();
+                {
+                    var t = (await new ServicoRep().GetAll()).Where(s => s.IdCliente.Equals(idCliente)).ToList();
+                    return t;
+                }
                 else
                     throw new Exception("Requisição inválida");
 

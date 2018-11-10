@@ -196,14 +196,28 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<IEnumerable<Dominio.Entidades.Profissional>> GetBYIdListAsync(int idCliente, string token, IEnumerable<int> ids)
+        public async Task<IEnumerable<ProfissionalServico>> GetByIdListAsync(int idCliente, string token, IEnumerable<int> ids)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
                     var result = _pfRepository.GetList(p => ids.Contains(p.ID));
-                    return result;
+
+                    var pIds = result.Select(x => x.ID);
+
+                    var pServicos = _servicoRep.GetList(x => pIds.Contains(x.UsuarioId));
+                    var sIds = pServicos.Select(x => x.ServicoId);
+
+                    var servicos = _sRep.GetList(s => sIds.Contains(s.ID));
+
+                    foreach (var item in pServicos)
+                    {
+                        item.Profissional = result.FirstOrDefault(p => p.ID.Equals(item.UsuarioId));
+                        item.Servico = servicos.FirstOrDefault(s => s.ID.Equals(item.ServicoId));
+                    }
+
+                    return pServicos;
                 }
                 else
                 {

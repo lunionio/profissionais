@@ -116,21 +116,21 @@ namespace Profissional.Aplicacao.Controllers
         }
 
         [HttpPost("{idCliente:int}/{token}")]
-        public async Task<IActionResult> GetByIdsAsync([FromRoute]int idCliente, [FromRoute]string token, [FromBody]IEnumerable<Base> ids)
+        public async Task<IActionResult> GetByIdsAsync([FromRoute]int idCliente, [FromRoute]string token, [FromBody]IEnumerable<int> ids)
         {
             try
             {
-                var profissionais = await _pfService.GetBYIdListAsync(idCliente, token, ids.Select(b => b.ID));
-                var telefones = await _tfService.GetAllAsync(profissionais.Select(p => p.ID).ToList(), token);
-                var enderecos = await _edService.GetAllAsync(profissionais.Select(p => p.ID).ToList(), token);
+                var pServicos = await _pfService.GetByIdListAsync(idCliente, token, ids);
+                var telefones = await _tfService.GetAllAsync(pServicos.Select(p => p.Profissional.ID).ToList(), token);
+                var enderecos = await _edService.GetAllAsync(pServicos.Select(p => p.Profissional.ID).ToList(), token);
 
-                foreach (var profissional in profissionais)
+                foreach (var pServico in pServicos)
                 {
-                    profissional.Telefone = telefones.FirstOrDefault(t => t.ProfissionalId.Equals(profissional.ID));
-                    profissional.Endereco = enderecos.FirstOrDefault(e => e.ProfissionalId.Equals(profissional.ID));
+                    pServico.Profissional.Telefone = telefones.FirstOrDefault(t => t.ProfissionalId.Equals(pServico.Profissional.ID));
+                    pServico.Profissional.Endereco = enderecos.FirstOrDefault(e => e.ProfissionalId.Equals(pServico.Profissional.ID));
                 }
 
-                return Ok(profissionais);
+                return Ok(pServicos);
             }
             catch (Exception e)
             {
