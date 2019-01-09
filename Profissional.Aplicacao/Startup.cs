@@ -29,6 +29,8 @@ namespace Profissional.Aplicacao
             services.AddTransient<FormacaoRepository>();
             services.AddTransient<ProfissionalServicoRep>();
             services.AddTransient<ServicoRep>();
+            services.AddTransient<CategoriaService>();
+            services.AddTransient<CategoriaRepository>();
 
             services.AddMvc();
         }
