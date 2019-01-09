@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Profissional.Servico", "Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Profissional.Aplicacao", "Profissional.Aplicacao\Profissional.Aplicacao.csproj", "{D592789F-2C78-4963-863B-8883399E2745}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 Testes", "6 Testes", "{0751106D-981C-401E-B145-798A343FB1CE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Profissional.Repositorio", "Profissional.Repositorio\Profissional.Repositorio.csproj", "{45347487-DA9B-4C4B-A762-FF529D2862D6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Profissional.Infra", "Profissional.Infra\Profissional.Infra.csproj", "{E3F87A12-55A7-4B43-BDBA-95A517368891}"

@@ -137,5 +137,28 @@ namespace Profissional.Aplicacao.Controllers
                 return StatusCode(500, "Não foi possível completar a operação.");
             }
         }
+
+        [HttpPost("{idCliente:int}/{token}")]
+        public async Task<IActionResult> GetByUserIdsAsync([FromRoute]int idCliente, [FromRoute]string token, [FromBody]IEnumerable<int> ids)
+        {
+            try
+            {
+                var pServicos = await _pfService.GetByUserIdListAsync(idCliente, token, ids);
+                var telefones = await _tfService.GetAllAsync(pServicos.Select(p => p.Profissional.ID).ToList(), token);
+                var enderecos = await _edService.GetAllAsync(pServicos.Select(p => p.Profissional.ID).ToList(), token);
+
+                foreach (var pServico in pServicos)
+                {
+                    pServico.Profissional.Telefone = telefones.FirstOrDefault(t => t.ProfissionalId.Equals(pServico.Profissional.ID));
+                    pServico.Profissional.Endereco = enderecos.FirstOrDefault(e => e.ProfissionalId.Equals(pServico.Profissional.ID));
+                }
+
+                return Ok(pServicos);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Não foi possível completar a operação.");
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace Profissional.Infra
         public DbSet<Telefone> Telefone { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<ProfissionalFormacao> ProfissionalFormacao { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

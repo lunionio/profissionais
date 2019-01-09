@@ -26,6 +26,12 @@ namespace Profissional.Aplicacao.Controllers
             return _servico.Cadastrar(obj, token);
         }
 
+        [HttpPost("{token}", Name = "Inserir")]
+        public bool Inserir([FromBody]IEnumerable<Avaliacao> obj, [FromRoute]string token)
+        {
+            return _servico.Inserir(obj, token);
+        }
+
         [HttpGet("{idCliente:int}/{idAvaliado:int}/{token}", Name = "GetByAvaliado")]
         public Task<List<Avaliacao>> GetByAvaliado([FromRoute]int idAvaliado, [FromRoute]string token, [FromRoute]int idCliente)
         {

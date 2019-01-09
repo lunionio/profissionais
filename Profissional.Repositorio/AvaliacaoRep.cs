@@ -27,7 +27,7 @@ namespace Profissional.Repositorio
 
         public async Task<List<Avaliacao>> GetByCodigoExterno(int codigoExterno, int idCliente)
         {
-            return await db.Avaliacao.Where(c => c.CodigoExterno == codigoExterno 
+            return await db.Avaliacao.Where(c => c.CodigoExterno.Equals(codigoExterno.ToString())
             && c.Ativo == true && c.IdCliente.Equals(idCliente)).ToListAsync();
         }
 
@@ -39,8 +39,10 @@ namespace Profissional.Repositorio
 
         public async Task<List<Avaliacao>> GetByOportunidade(int idOportunidade, int idCliente)
         {
-            return await db.Avaliacao.Where(c => c.OportunidadeId == idOportunidade 
-            && c.Ativo == true && c.IdCliente.Equals(idCliente)).ToListAsync();
+            var r = await db.Avaliacao.Where(c => c.OportunidadeId.Equals(idOportunidade)
+            && c.Ativo && c.IdCliente.Equals(idCliente)).ToListAsync();
+
+            return r;
         }
     }
 }

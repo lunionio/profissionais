@@ -18,9 +18,18 @@ namespace Profissional.Servico
             {
                 if (SeguracaServ.validaToken(token))
                 {
-                    obj.DataCriacao = DateTime.UtcNow;
-                    obj.DataEdicao = DateTime.UtcNow;
-                    return new AvaliacaoRep().Add(obj);
+                    if (obj.ID == 0)
+                    {
+                        obj.DataCriacao = DateTime.UtcNow;
+                        obj.DataEdicao = DateTime.UtcNow;
+                        return new AvaliacaoRep().Add(obj);
+                    }
+                    else
+                    {
+                        obj.DataEdicao = DateTime.UtcNow;
+                        new AvaliacaoRep().Update(obj);
+                        return 1;
+                    }
                 }
                 else
                     throw new Exception("Token inválido!");
@@ -29,6 +38,38 @@ namespace Profissional.Servico
             {
 
                 throw new Exception("Erro ao efetuar requisição!");
+            }
+        }
+
+        public bool Inserir(IEnumerable<Avaliacao> obj, string token)
+        {
+            try
+            {
+                if (SeguracaServ.validaToken(token))
+                {
+                    foreach (var item in obj)
+                    {
+                        if (item.ID == 0)
+                        {
+                            item.DataCriacao = DateTime.UtcNow;
+                            item.DataEdicao = DateTime.UtcNow;
+                            var r = new AvaliacaoRep().Add(item);
+                        }
+                        else
+                        {
+                            item.DataEdicao = DateTime.UtcNow;
+                            new AvaliacaoRep().Update(item);
+                        }
+                    }
+
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 
@@ -101,7 +142,10 @@ namespace Profissional.Servico
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
-                    return await new AvaliacaoRep().GetByOportunidade(idOportunidade, idCliente);
+                {
+                    var r = await new AvaliacaoRep().GetByOportunidade(idOportunidade, idCliente);
+                    return r;
+                }
                 else
                     throw new Exception("Token inválido!");
             }
