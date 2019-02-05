@@ -30,10 +30,10 @@ namespace Profissional.Aplicacao.Controllers
             try
             {
                 var pf = await _pfService.SaveAsync(profissional, token);
-                await _tfService.SaveAsync(pf.Telefone, token);
-                await _edService.SaveAsync(pf.Endereco, token);
+                pf.Telefone = await _tfService.SaveAsync(pf.Telefone, token);
+                pf.Endereco = await _edService.SaveAsync(pf.Endereco, token);
 
-                return Ok("Profissional salvo com sucesso.");
+                return Ok(pf);
             }
             catch(Exception e)
             {
@@ -47,13 +47,27 @@ namespace Profissional.Aplicacao.Controllers
             try
             {
                 var pServicos = await _pfService.GetProfissionalServicos(idCliente, token);
-                var telefones = await _tfService.GetAllAsync(pServicos.Select(p => p.Profissional.ID).ToList(), token);
-                var enderecos = await _edService.GetAllAsync(pServicos.Select(p => p.Profissional.ID).ToList(), token);
+
+                var ids = new List<int>();
+
+                foreach (var item in pServicos)
+                {
+                    if(item.Profissional != null)
+                    {
+                        ids.Add(item.Profissional.ID);
+                    }
+                }
+
+                var telefones = await _tfService.GetAllAsync(ids, token);
+                var enderecos = await _edService.GetAllAsync(ids, token);
 
                 foreach (var s in pServicos)
                 {
-                    s.Profissional.Telefone = telefones.FirstOrDefault(t => t.ProfissionalId.Equals(s.Profissional.ID));
-                    s.Profissional.Endereco = enderecos.FirstOrDefault(e => e.ProfissionalId.Equals(s.Profissional.ID));
+                    if (s.Profissional != null)
+                    {
+                        s.Profissional.Telefone = telefones.FirstOrDefault(t => t.ProfissionalId.Equals(s.Profissional.ID));
+                        s.Profissional.Endereco = enderecos.FirstOrDefault(e => e.ProfissionalId.Equals(s.Profissional.ID));
+                    }
                 }
 
                 return Ok(pServicos);
@@ -154,6 +168,26 @@ namespace Profissional.Aplicacao.Controllers
                 }
 
                 return Ok(pServicos);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Não foi possível completar a operação.");
+            }
+        }
+
+        [HttpGet("{idCliente:int}/{userId:int}/{token}")]
+        public async Task<IActionResult> GetByUserIdAsync([FromRoute]int idCliente, [FromRoute]string token, [FromRoute]int userId)
+        {
+            try
+            {
+                var pServico = await _pfService.GetByUserIdAsync(idCliente, token, userId);
+                var telefone = await _tfService.GetByPfIdAsync(pServico.Profissional.ID, token);
+                var endereco = await _edService.GetByPfIdAsync(pServico.Profissional.ID, token);
+
+                pServico.Profissional.Telefone = telefone;
+                pServico.Profissional.Endereco = endereco;
+
+                return Ok(pServico);
             }
             catch (Exception e)
             {

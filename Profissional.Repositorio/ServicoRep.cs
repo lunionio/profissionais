@@ -1,12 +1,11 @@
 ﻿
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Profissional.Dominio.Entidades;
 using Profissional.Dominio.Interfaces;
 using Profissional.Infra;
-using Profissional.Repositoriox;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Profissional.Repositorio
 {

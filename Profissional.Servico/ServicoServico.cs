@@ -12,13 +12,13 @@ namespace Profissional.Servico
     {
         private ServicoRep Rep = new ServicoRep();
 
-        public async Task<List<Dominio.Entidades.Servico>> Get(string token, int idCliente)
+        public async Task<IList<Dominio.Entidades.Servico>> Get(string token, int idCliente)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    var t = (await new ServicoRep().GetAll()).Where(s => s.IdCliente.Equals(idCliente)).ToList();
+                    var t = new ServicoRep().GetList(s => s.IdCliente.Equals(idCliente));
                     return t;
                 }
                 else

@@ -22,13 +22,13 @@ namespace Profissional.Aplicacao.Controllers
         }
 
         [HttpPost("{token}")]
-        public int Cadastrar([FromBody]ProfissionalServico obj, [FromRoute]string token)
+        public ProfissionalServico Cadastrar([FromBody]ProfissionalServico obj, [FromRoute]string token)
         {
             return _servico.Cadastrar(obj, token);
         }
 
         [HttpGet("{idCliente:int}/{token}")]
-        public async Task<List<ProfissionalServico>> GetAll([FromRoute]string token, [FromRoute]int idCliente)
+        public async Task<IList<ProfissionalServico>> GetAll([FromRoute]string token, [FromRoute]int idCliente)
         {
             return await _servico.GetAll(token, idCliente);
         }

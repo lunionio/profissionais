@@ -2,14 +2,13 @@
 using Profissional.Dominio.Entidades;
 using Profissional.Dominio.Interfaces;
 using Profissional.Infra;
-using Profissional.Repositoriox;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Profissional.Repositorio
 {
-   public class AvaliacaoRep : BaseRep<Avaliacao>, IAvaliacao
+    public class AvaliacaoRep : BaseRep<Avaliacao>, IAvaliacao
     {
         private Contexto db = new Contexto();
 

@@ -19,7 +19,7 @@ namespace Profissional.Aplicacao.Controllers
             _categorias = categorias;
         }
 
-        [HttpGet("{idCliente:int}/{token")]
+        [HttpGet("{idCliente:int}/{token}")]
         public async Task<IActionResult> GetCategoriasAsync([FromRoute]string token, [FromRoute]int idCliente)
         {
             try

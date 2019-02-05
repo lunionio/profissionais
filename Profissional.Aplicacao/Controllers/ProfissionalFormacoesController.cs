@@ -25,7 +25,7 @@ namespace Profissional.Aplicacao.Controllers
             try
             {
                 var pf = await _fService.SaveAsync(formacao, token);
-                return Ok("Formação salva com sucesso.");
+                return Ok(pf);
             }
             catch(Exception e)
             {

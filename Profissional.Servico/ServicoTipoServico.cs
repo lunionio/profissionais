@@ -10,12 +10,12 @@ namespace Profissional.Servico
 {
     public class ServicoTipoServico : IServicoTipoSerico
     {
-        public async Task<List<ServicoTipo>> Get(string token, int idCliente)
+        public async Task<IList<ServicoTipo>> Get(string token, int idCliente)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
-                    return (await new ServicoTipoRep().GetAll()).Where(st => st.IdCliente.Equals(idCliente)).ToList();
+                    return new ServicoTipoRep().GetList(st => st.IdCliente.Equals(idCliente));
                 else
                     throw new Exception("Requisição inválida");
             }

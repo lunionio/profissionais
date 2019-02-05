@@ -82,14 +82,23 @@ namespace Profissional.Servico
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.validaTokenAsync(token))
                 {
-                    entity.DataCriacao = DateTime.UtcNow;
-                    entity.DataEdicao = DateTime.UtcNow;
-                    entity.Ativo = true;
-                    entity.ID = _repository.Add(entity);
+                    if (entity.ID == 0)
+                    {
+                        entity.DataCriacao = DateTime.UtcNow;
+                        entity.DataEdicao = DateTime.UtcNow;
+                        entity.Ativo = true;
+                        entity.ID = _repository.Add(entity);
 
-                    return entity;
+                        return entity;
+                    }
+                    else
+                    {
+                        entity.DataEdicao = DateTime.UtcNow;
+                        _repository.Update(entity);
+                        return entity;
+                    }
                 }
                 else
                 {

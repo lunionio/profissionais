@@ -12,7 +12,7 @@ namespace Profissional.Aplicacao.Controllers
     public class ServicoController : Controller
     {
         [HttpGet("{idCliente:int}/{token}")]
-        public async Task<List<Dominio.Entidades.Servico>> Get([FromRoute]string token, [FromRoute]int idCliente)
+        public async Task<IList<Dominio.Entidades.Servico>> Get([FromRoute]string token, [FromRoute]int idCliente)
         {
             return await new ServicoServico().Get(token, idCliente);
         }

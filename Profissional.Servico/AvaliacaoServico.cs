@@ -73,12 +73,12 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<List<Avaliacao>> GetAllAsync(string token, int idCliente)
+        public async Task<IList<Avaliacao>> GetAllAsync(string token, int idCliente)
         {
             try
             {
                 if (await SeguracaServ.validaTokenAsync(token))
-                    return (await new AvaliacaoRep().GetAll()).Where(a => a.IdCliente.Equals(idCliente)).ToList();
+                    return new AvaliacaoRep().GetList(a => a.IdCliente.Equals(idCliente));
                 else
                     throw new Exception("Token inválido!");
             }

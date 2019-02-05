@@ -1,4 +1,6 @@
-﻿namespace Profissional.Dominio.Entidades
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Profissional.Dominio.Entidades
 {
     public class Servico: Base
     {

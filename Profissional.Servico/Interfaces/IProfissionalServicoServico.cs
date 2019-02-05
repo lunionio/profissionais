@@ -6,8 +6,8 @@ namespace Profissional.Servico.Interfaces
 {
     public interface IProfissionalServicoServico
     {
-        Task<List<ProfissionalServico>> GetAll(string token, int idCliente);
-        int Cadastrar(ProfissionalServico obj, string token);
+        Task<IList<ProfissionalServico>> GetAll(string token, int idCliente);
+        ProfissionalServico Cadastrar(ProfissionalServico obj, string token);
         void Alterar(ProfissionalServico obj, string token);
         void Remover(ProfissionalServico obj, string token);
 

@@ -6,7 +6,7 @@ namespace Profissional.Dominio.Entidades
     {
         public int UsuarioId { get; set; }
         public int ServicoId { get; set; }
-
+        public int? CodigoExterno { get; set; }
         public Servico Servico { get; set; }
 
         [NotMapped]

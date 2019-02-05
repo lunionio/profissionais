@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Profissional.Dominio.Entidades
@@ -9,6 +10,7 @@ namespace Profissional.Dominio.Entidades
         public string Email { get; set; }
         public Endereco Endereco { get; set; }
         public Telefone Telefone { get; set; }
+        [NotMapped]
         public IList<ProfissionalFormacao> Formacoes { get; set; }
         public int IdUsuario { get; set; }
         public DateTime DataNascimento { get; set; }

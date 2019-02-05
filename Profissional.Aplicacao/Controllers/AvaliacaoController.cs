@@ -57,7 +57,7 @@ namespace Profissional.Aplicacao.Controllers
         }
 
         [HttpGet("{idCliente:int}/{token}")]
-        public async Task<List<Avaliacao>> GetAllAsync([FromRoute]string token, [FromRoute]int idCliente)
+        public async Task<IList<Avaliacao>> GetAllAsync([FromRoute]string token, [FromRoute]int idCliente)
         {
             return await _servico.GetAllAsync(token, idCliente);
         }

@@ -1,90 +1,128 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Profissional.Dominio.Interfaces;
+using Profissional.Infra;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Profissional.Dominio.Interfaces;
-using Profissional.Infra;
+using System.Text;
 
-namespace Profissional.Repositoriox
+namespace Profissional.Repositorio
 {
-    public class BaseRep<TEntity> : IBase<TEntity> where TEntity : class
+    /// <summary>
+    /// Metodos genericos responsaveis pela gravação e leitura das entidades de banco de dados 
+    /// </summary>
+    /// <typeparam name="T">Tipo da classe</typeparam>
+    public class BaseRep<T> : IRepository<T> where T : class
     {
-        private Contexto db = new Contexto();
-
-        public int Add(params TEntity[] items)
+        /// <summary>
+        /// Busca todos itens salvo na base 
+        /// </summary>
+        /// <param name="navigationProperties">Classe operante</param>
+        /// <returns>Lista baseada no tipo passado</returns>
+        public virtual IList<T> GetAll()
         {
-            //int id = 0;
-            //foreach (TEntity item in items)
-            //{
-            //    db.Entry(item).State = EntityState.Added;
-            //    dynamic idT = item;
-            //    id = idT.ID;
+            List<T> list;
+            var context = new Contexto();
 
-            //}
-            // db.SaveChanges();
-            //return  id;
+            IQueryable<T> dbQuery = context.Set<T>();
 
-            var item = items.FirstOrDefault();
-            db.Entry(item).State = EntityState.Added;
-            db.SaveChanges();
 
-            return (item as dynamic).ID;
+            list = dbQuery
+                .ToList<T>();
+
+            return list;
         }
-
-        public async Task<List<TEntity>> GetAll()
-        {
-            var list = new Contexto().Set<TEntity>();
-            return await list.ToListAsync();
-        }
-
-        public void Remove(params TEntity[] items)
-        {
-            foreach (TEntity item in items)
-            {
-                db.Entry(item).State = EntityState.Deleted;
-            }
-            db.SaveChanges();
-        }
-
-        public void Update(params TEntity[] items)
-        {
-
-            foreach (TEntity item in items)
-            {
-                db.Entry(item).State = EntityState.Modified;
-            }
-            db.SaveChanges();
-        }
-
         /// <summary>
         /// Usado para pegar todos utilizando Lambda Expression
         /// </summary>
         /// <param name="where">Sintaxe where para selecionar uma clausula</param>
         /// <param name="navigationProperties">Classe Operante</param>
         /// <returns>Lista filtrada</returns>
-        public virtual IList<TEntity> GetList(Func<TEntity, bool> where,
-             params Expression<Func<TEntity, object>>[] navigationProperties)
+        public virtual IList<T> GetList(Func<T, bool> where,
+             params Expression<Func<T, object>>[] navigationProperties)
         {
-            List<TEntity> list = new List<TEntity>();
+            List<T> list = new List<T>();
+            var context = new Contexto();
+            IQueryable<T> dbQuery = context.Set<T>().AsQueryable();
 
-            IQueryable<TEntity> dbQuery = db.Set<TEntity>().AsQueryable();
-
-            var query = db.Set<TEntity>().AsQueryable();
+            var query = context.Set<T>().AsQueryable();
 
             //Apply eager loading
 
-            foreach (Expression<Func<TEntity, object>> navigationProperty in navigationProperties)
-                dbQuery = dbQuery.Include<TEntity, object>(navigationProperty);
+            foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
+                dbQuery = dbQuery.Include<T, object>(navigationProperty);
 
             list = dbQuery
                 .AsNoTracking()
                 .Where(where)
-                .ToList<TEntity>();
+                .ToList<T>();
 
 
             return list;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="navigationProperties"></param>
+        /// <returns></returns>
+        public virtual T GetSingle(Func<T, bool> where,
+             params Expression<Func<T, object>>[] navigationProperties)
+        {
+            T item = null;
+            var context = new Contexto();
+            IQueryable<T> dbQuery = context.Set<T>();
+
+            //Apply eager loading
+            foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
+                dbQuery = dbQuery.Include<T, object>(navigationProperty);
+
+            item = dbQuery
+                .AsNoTracking() //Don't track any changes for the selected item
+                .FirstOrDefault(where); //Apply where clause
+
+            return item;
+        }
+        /// <summary>
+        /// Adiciona um item na base de dados 
+        /// </summary>
+        /// <param name="items">Baseado na classe operante</param>
+        public virtual int Add(params T[] items)
+        {
+            var context = new Contexto();
+
+            var item = items.FirstOrDefault();
+            context.Entry(item).State = EntityState.Added;
+            context.SaveChanges();
+
+            return (item as dynamic).ID;
+        }
+        /// <summary>
+        /// Atualiza um item na base de dados 
+        /// </summary>
+        /// <param name="items">Item Operantante pode se passar um unique ou lista de objetos a ser salvo</param>
+        public virtual void Update(params T[] items)
+        {
+            var context = new Contexto();
+            foreach (T item in items)
+            {
+                context.Entry(item).State = EntityState.Modified;
+            }
+            context.SaveChanges();
+        }
+        /// <summary>
+        /// Remove um objeto da base dados 
+        /// </summary>
+        /// <param name="items">Item Operantante pode se passar um unique ou lista de objetos a ser salvo</param>
+        public virtual void Remove(params T[] items)
+        {
+            var context = new Contexto();
+            foreach (T item in items)
+            {
+                context.Entry(item).State = EntityState.Deleted;
+            }
+            context.SaveChanges();
         }
     }
 }

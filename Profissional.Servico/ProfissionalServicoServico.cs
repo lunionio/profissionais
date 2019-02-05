@@ -31,32 +31,41 @@ namespace Profissional.Servico
             }
         }
 
-        public int Cadastrar(ProfissionalServico obj, string token)
+        public ProfissionalServico Cadastrar(ProfissionalServico obj, string token)
         {
             try
             {
                 if (SeguracaServ.validaToken(token))
                 {
-                    obj.DataCriacao = DateTime.UtcNow;
-                    obj.DataEdicao = DateTime.UtcNow;
-                    return _Rep.Add(obj);
+                    if (obj.ID == 0)
+                    {
+                        obj.DataCriacao = DateTime.UtcNow;
+                        obj.DataEdicao = DateTime.UtcNow;
+                        obj.ID = _Rep.Add(obj);
+                    }
+                    else
+                    {
+                        obj.DataEdicao = DateTime.UtcNow;
+                        _Rep.Update(obj);
+                    }
+
+                    return obj;
                 }
                 else
                     throw new Exception("Token inválido!");
             }
             catch (Exception ex)
             {
-
                 throw new Exception("Erro ao efetuar requisição!");
             }
         }
 
-        public async Task<List<ProfissionalServico>> GetAll(string token, int idCliente)
+        public async Task<IList<ProfissionalServico>> GetAll(string token, int idCliente)
         {
             try
             {
-                if (SeguracaServ.validaToken(token))
-                    return (await _Rep.GetAll()).Where(ps => ps.IdCliente.Equals(idCliente)).ToList();
+                if (await SeguracaServ.validaTokenAsync(token))
+                    return _Rep.GetList(ps => ps.IdCliente.Equals(idCliente));
                 else
                     throw new Exception("Token inválido!");
             }
