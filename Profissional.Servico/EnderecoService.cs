@@ -21,7 +21,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     if (entity.ID == 0)
                     {
@@ -48,19 +48,19 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<IEnumerable<Endereco>> GetAllAsync(List<int> profissionaisIds, string token)
+        public IEnumerable<Endereco> GetAllAsync(List<int> profissionaisIds, string token)
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
-                {
+                //if (await SeguracaServ.ValidaTokenAsync(token))
+                //{
                     var enderecos = _repository.GetList(t => profissionaisIds.Contains(t.ProfissionalId));
                     return enderecos;
-                }
-                else
-                {
-                    throw new Exception("Token inválido!");
-                }
+                //}
+                //else
+                //{
+                //    throw new Exception("Token inválido!");
+                //}
             }
             catch (Exception e)
             {
@@ -68,19 +68,19 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<Endereco> GetByPfIdAsync(int profissionalId, string token)
+        public Endereco GetByPfIdAsync(int profissionalId, string token)
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
-                {
+                //if(await SeguracaServ.ValidaTokenAsync(token))
+                //{
                     var endereco = _repository.GetList(e => e.ProfissionalId.Equals(profissionalId)).SingleOrDefault();
                     return endereco;
-                }
-                else
-                {
-                    throw new Exception("Token inválido!");
-                }
+                //}
+                //else
+                //{
+                //    throw new Exception("Token inválido!");
+                //}
             }
             catch (Exception e)
             {
@@ -92,7 +92,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     entity.DataEdicao = DateTime.UtcNow;
                     _repository.Update(entity);
@@ -114,7 +114,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
+                if(await SeguracaServ.ValidaTokenAsync(token))
                 {
                     _repository.Remove(entity);
                 }
@@ -133,7 +133,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
+                if(await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var enderecos = _repository.GetList(e => e.IdCliente.Equals(idCliente));
                     return enderecos;
@@ -153,7 +153,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
+                if(await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var endereco = _repository.GetList(e => e.ID.Equals(entityId) 
                         && e.IdCliente.Equals(idCliente)).SingleOrDefault();

@@ -22,7 +22,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     if (entity.ID == 0)
                     {
@@ -50,19 +50,19 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<IEnumerable<Telefone>> GetAllAsync(List<int> profissionaisIds, string token)
+        public IEnumerable<Telefone> GetAllAsync(List<int> profissionaisIds, string token)
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
-                {
+                //if(await SeguracaServ.ValidaTokenAsync(token))
+                //{
                     var telefones = _tfRepository.GetList(e => profissionaisIds.Contains(e.ProfissionalId));
                     return telefones;
-                }
-                else
-                {
-                    throw new Exception("Token inválido!");
-                }
+                //}
+                //else
+                //{
+                //    throw new Exception("Token inválido!");
+                //}
             }
             catch (Exception e)
             {
@@ -70,19 +70,19 @@ namespace Profissional.Servico
             }
         }
 
-        public async Task<Telefone> GetByPfIdAsync(int profissionalId, string token)
+        public Telefone GetByPfIdAsync(int profissionalId, string token)
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
-                {
+                //if (await SeguracaServ.ValidaTokenAsync(token))
+                //{
                     var telefone = _tfRepository.GetList(e => e.ProfissionalId.Equals(profissionalId)).SingleOrDefault();
                     return telefone;
-                }
-                else
-                {
-                    throw new Exception("Token inválido!");
-                }
+                //}
+                //else
+                //{
+                //    throw new Exception("Token inválido!");
+                //}
             }
             catch (Exception e)
             {
@@ -94,7 +94,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     entity.DataEdicao = DateTime.UtcNow;
                     _tfRepository.Update(entity);
@@ -116,7 +116,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     _tfRepository.Remove(entity);
                 }
@@ -135,7 +135,7 @@ namespace Profissional.Servico
         {
             try
             { 
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var telefones = _tfRepository.GetList(e => e.IdCliente.Equals(idCliente));
                     return telefones;
@@ -155,7 +155,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var telefone = _tfRepository.GetList(e => e.IdCliente.Equals(idCliente) 
                         && e.ID.Equals(entityId)).SingleOrDefault();

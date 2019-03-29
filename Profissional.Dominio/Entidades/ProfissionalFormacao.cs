@@ -10,6 +10,7 @@ namespace Profissional.Dominio.Entidades
         public DateTime InicioCurso { get; set; }
         public DateTime FinalCurso { get; set; }
 
-        public int ProfissionalId { get; set; }
+        public int? ProfissionalId { get; set; }
+        public int? CodigoExterno { get; set; }
     }
 }

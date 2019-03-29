@@ -22,7 +22,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
+                if(await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var result = _repository.GetList(f => f.IdCliente.Equals(idCliente));
                     return result;
@@ -42,7 +42,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
+                if(await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var formacao = _repository.GetList(f => f.ID.Equals(entityId) 
                         && f.IdCliente.Equals(idCliente)).SingleOrDefault();
@@ -63,7 +63,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
+                if(await SeguracaServ.ValidaTokenAsync(token))
                 {
                     _repository.Remove(entity);
                 }
@@ -82,7 +82,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     if (entity.ID == 0)
                     {
@@ -115,7 +115,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
+                if(await SeguracaServ.ValidaTokenAsync(token))
                 {
                     entity.DataEdicao = DateTime.UtcNow;
                     _repository.Update(entity);
@@ -137,10 +137,31 @@ namespace Profissional.Servico
         {
             try
             {
-                if(await SeguracaServ.validaTokenAsync(token))
+                if(await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var result = _repository.GetList(f => f.IdCliente.Equals(idCliente) 
                         && f.ProfissionalId.Equals(idProfissional));
+                    return result;
+                }
+                else
+                {
+                    throw new Exception("Token inválido!");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao efetuar requisição!", e);
+            }
+        }
+
+        public async Task<IEnumerable<ProfissionalFormacao>> GetByCodioExternoAsync(int idCliente, int codigoExterno, string token)
+        {
+            try
+            {
+                if (await SeguracaServ.ValidaTokenAsync(token))
+                {
+                    var result = _repository.GetList(f => f.IdCliente.Equals(idCliente)
+                        && f.CodigoExterno.Equals(codigoExterno));
                     return result;
                 }
                 else

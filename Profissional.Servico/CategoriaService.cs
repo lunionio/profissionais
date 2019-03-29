@@ -21,7 +21,7 @@ namespace Profissional.Servico
         {
             try
             {
-                await SeguracaServ.validaTokenAsync(token);
+                await SeguracaServ.ValidaTokenAsync(token);
 
                 var result = _repository.GetList(c => c.IdCliente.Equals(idCliente));
                 return result;

@@ -75,7 +75,7 @@ namespace Profissional.Aplicacao.Controllers
             }
         }
 
-        [HttpDelete("{token}")]
+        [HttpPost("{token}")]
         public async Task<IActionResult> DeleteAsync([FromBody]ProfissionalFormacao formacao, [FromRoute]string token)
         {
             try
@@ -98,6 +98,20 @@ namespace Profissional.Aplicacao.Controllers
                 return Ok(formacoes);
             }
             catch(Exception e)
+            {
+                return StatusCode(500, "Não foi possível completar a operação.");
+            }
+        }
+
+        [HttpGet("{idCliente:int}/{codigoExterno:int}/{token}")]
+        public async Task<IActionResult> GetByCodigoExternoAsync([FromRoute]string token, [FromRoute]int codigoExterno, [FromRoute]int idCliente)
+        {
+            try
+            {
+                var formacoes = await _fService.GetByCodioExternoAsync(idCliente, codigoExterno, token);
+                return Ok(formacoes);
+            }
+            catch (Exception e)
             {
                 return StatusCode(500, "Não foi possível completar a operação.");
             }

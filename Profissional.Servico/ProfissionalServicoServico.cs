@@ -64,7 +64,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                     return _Rep.GetList(ps => ps.IdCliente.Equals(idCliente));
                 else
                     throw new Exception("Token inválido!");
@@ -92,6 +92,11 @@ namespace Profissional.Servico
                 throw new Exception("Erro ao efetuar requisição!");
 
             }
+        }
+
+        Task<ProfissionalServico> IProfissionalServicoServico.Cadastrar(ProfissionalServico obj, string token)
+        {
+            throw new NotImplementedException();
         }
     }
 }

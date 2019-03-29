@@ -14,10 +14,12 @@ namespace Profissional.Infra
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<ProfissionalFormacao> ProfissionalFormacao { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<ProfissionalXUrl> ProfissionalXUrl { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=34.226.175.244;Initial Catalog=Staffpro_Profissionais;Persist Security Info=True;User ID=sa;Password=StaffPro@123;");
+            //optionsBuilder.UseSqlServer(@"Server=WIN-2V8OOHSRMOD;Database=Staffpro_Profissionais;Trusted_Connection=True;Integrated Security = True;");
+            optionsBuilder.UseSqlServer(@"Data Source=18.229.17.132;Initial Catalog=Staffpro_Profissionais;Persist Security Info=True;User ID=sa;Password=StaffPro@123;");
         }
     }
 }

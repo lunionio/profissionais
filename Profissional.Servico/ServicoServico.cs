@@ -16,7 +16,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var t = new ServicoRep().GetList(s => s.IdCliente.Equals(idCliente));
                     return t;
@@ -35,7 +35,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                     return await new ServicoRep().GetByIdAsync(id, idCliente);
                 else
                     throw new Exception("Requisição inválida");
@@ -67,7 +67,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                     return await new ServicoRep().GetByServicoTipoId(idTipo, idCliente);
                 else
                     throw new Exception("Requisição inválida");

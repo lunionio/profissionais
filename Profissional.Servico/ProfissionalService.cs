@@ -26,17 +26,24 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     if (entity.ID == 0)
                     {
                         entity.DataCriacao = DateTime.UtcNow;
                         entity.DataEdicao = DateTime.UtcNow;
-                        entity.Ativo = true;
+                        //entity.Ativo = true;
                         var pfId = _pfRepository.Add(entity);
 
-                        entity.Endereco.ProfissionalId = pfId;
-                        entity.Telefone.ProfissionalId = pfId;
+                        if (entity.Endereco != null)
+                        {
+                            entity.Endereco.ProfissionalId = pfId;
+                        }
+
+                        if (entity.Telefone != null)
+                        {
+                            entity.Telefone.ProfissionalId = pfId;
+                        }
                     }
                     else
                     {
@@ -60,7 +67,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var result = _pfRepository.GetList(p => p.IdCliente.Equals(idCliente));
                     return result;
@@ -80,7 +87,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     lock (_lock)
                     {
@@ -121,7 +128,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var result = _pfRepository.GetList(p => p.IdCliente.Equals(idCliente) && p.ID.Equals(entityId)).SingleOrDefault();
                     return result;
@@ -141,7 +148,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     lock (_lock)
                     {
@@ -171,7 +178,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     entity.DataEdicao = DateTime.UtcNow;
                     _pfRepository.Update(entity);
@@ -193,7 +200,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     _pfRepository.Remove(entity);
                 }
@@ -212,7 +219,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var result = _pfRepository.GetList(p => ids.Contains(p.ID));
 
@@ -247,7 +254,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     lock (_lock)
                     {
@@ -278,7 +285,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     lock (_lock)
                     {

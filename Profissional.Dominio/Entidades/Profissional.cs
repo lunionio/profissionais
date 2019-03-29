@@ -17,5 +17,8 @@ namespace Profissional.Dominio.Entidades
         public decimal Avaliacao { get; set; }
         public Categoria Categoria { get; set; }
         public int? CategoriaId { get; set; }
+        public string CPF { get; set; }
+        public string RegistroProfissional { get; set; }
+        public string UFRegistro { get; set; }
     }
 }

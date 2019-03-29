@@ -77,7 +77,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                     return new AvaliacaoRep().GetList(a => a.IdCliente.Equals(idCliente));
                 else
                     throw new Exception("Token inválido!");
@@ -93,7 +93,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                     return await new AvaliacaoRep().GetByAvaliado(idAvaliado, idCliente);
                 else
                     throw new Exception("Token inválido!");
@@ -108,7 +108,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                     return await new AvaliacaoRep().GetByAvaliadorAsync(idAvaliador, idCliente);
                 else
                     throw new Exception("Token inválido!");
@@ -124,7 +124,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                     return await new AvaliacaoRep().GetByCodigoExterno(idOportunidade, idCliente);
                 else
                     throw new Exception("Token inválido!");
@@ -141,7 +141,7 @@ namespace Profissional.Servico
         {
             try
             {
-                if (await SeguracaServ.validaTokenAsync(token))
+                if (await SeguracaServ.ValidaTokenAsync(token))
                 {
                     var r = await new AvaliacaoRep().GetByOportunidade(idOportunidade, idCliente);
                     return r;

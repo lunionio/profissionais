@@ -6,7 +6,7 @@ namespace Profissional.Servico
 {
     public class SeguracaServ
     {
-        public static async Task<bool> validaTokenAsync(string token)
+        public static async Task<bool> ValidaTokenAsync(string token)
         {
 
             RestClient client = new RestClient("http://localhost:5300/");
