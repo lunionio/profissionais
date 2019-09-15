@@ -32,7 +32,7 @@ namespace Profissional.Aplicacao.Controllers
             }
         }
 
-        [HttpPut("{token}")]
+        [HttpPut("{token}", Name = "Update")]
         public async Task<IActionResult> UpdateAsync([FromRoute]string token, [FromBody]Dominio.Entidades.ProfissionalFavorito profissional)
         {
             try
