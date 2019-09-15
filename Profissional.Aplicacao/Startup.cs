@@ -34,6 +34,9 @@ namespace Profissional.Aplicacao
             services.AddTransient<UrlRepository>();
             services.AddTransient<UrlService>();
 
+            services.AddTransient<ProfissionalFavoritoServico>();
+            services.AddTransient<ProfissionalFavoritoRep>();
+
             services.AddMvc();
         }
 

@@ -15,11 +15,13 @@ namespace Profissional.Infra
         public DbSet<ProfissionalFormacao> ProfissionalFormacao { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<ProfissionalXUrl> ProfissionalXUrl { get; set; }
+        public DbSet<ProfissionalFavorito> ProfissionalFavorito { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=TSERVICES\SQLEXPRESS;Database=Staffpro_Profissionais;Trusted_Connection=True;Integrated Security = True;");
+            //optionsBuilder.UseSqlServer(@"Server=TSERVICES\SQLEXPRESS;Database=Staffpro_Profissionais;Trusted_Connection=True;Integrated Security = True;");
             //optionsBuilder.UseSqlServer(@"Data Source=18.229.17.132;Initial Catalog=Staffpro_Profissionais;Persist Security Info=True;User ID=sa;Password=StaffPro@123;");
+            optionsBuilder.UseSqlServer(@"Server=187.84.232.164;Initial Catalog=Staffpro_Profissionais;Persist Security Info=True;User ID=sa;Password=StaffPro@123;");
         }
     }
 }
