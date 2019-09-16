@@ -8,7 +8,7 @@ using Profissional.Servico;
 namespace Profissional.Aplicacao.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class ProfissionalFavoritoController : Controller
     {
         private readonly ProfissionalFavoritoServico _profissionalFavoritoServico;
@@ -32,7 +32,7 @@ namespace Profissional.Aplicacao.Controllers
             }
         }
 
-        [HttpPut("{token}", Name = "Update")]
+        [HttpPost("Update/{token}")]
         public async Task<IActionResult> UpdateAsync([FromRoute]string token, [FromBody]Dominio.Entidades.ProfissionalFavorito profissional)
         {
             try
@@ -47,7 +47,7 @@ namespace Profissional.Aplicacao.Controllers
             }
         }
 
-        [HttpPost("{idCliente:int}/{idEmpresa:int}/{token}")]
+        [HttpGet("{idCliente:int}/{idEmpresa:int}/{token}")]
         public async Task<IActionResult> GetByIdsAsync([FromRoute]int idCliente, [FromRoute]int idEmpresa,  [FromRoute]string token)
         {
             try
